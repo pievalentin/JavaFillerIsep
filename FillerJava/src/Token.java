@@ -1,6 +1,6 @@
 
 public class Token {
-	private Color color;
+	private Colors color;
 	private Player owner;
 	boolean possesed;
 	
