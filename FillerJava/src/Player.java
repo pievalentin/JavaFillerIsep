@@ -4,20 +4,23 @@ public class Player {
 	private String Nom;
 	private Score score;
 
-	public void play(){
+	public void play(Board board){
 		Colors color;
 		color = askColor();
+		Board.take(color,this);
 
 
 	}
 
-	public Colors askColor(){
-		//TODO ask color
+	public static Colors askColor(){
 		String answer;
+		Colors color;
+		System.out.println("choissisez une couleur : ");
 		answer = Keyboard.askString();
-
-
+		color = Keyboard.stringToColor(answer);
+		return color;
 	}
+
 
 
 

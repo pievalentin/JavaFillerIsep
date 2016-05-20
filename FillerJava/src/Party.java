@@ -10,10 +10,11 @@ public class Party {
     Player player4;
     IA IA1;
     IA IA2;
-    Board board
+    Board board;
 
 
     Boolean over;
+    String winner;
 
     public Party() {
 
@@ -27,12 +28,18 @@ public class Party {
         while (over){
             player1.play(board);
             IA.play(board);
-            over =
+            over = isOver(board);
         }
 
     }
 
-    public boolean TossHumanVsIa() {
+    public boolean isOver(Board board){
+        Boolean result = fasle;
 
+
+
+        return result;
     }
+
+
 }

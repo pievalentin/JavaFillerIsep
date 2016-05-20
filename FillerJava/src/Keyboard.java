@@ -10,8 +10,8 @@ public class Keyboard {
         return string;
     }
 
-    public Colors.TYPE(String string){
-        Colors color;
+    public static Colors stringToColor(String string){
+        Colors color = Colors.GREEN;
         switch (string){
             case "r":
                 color=Colors.RED;
@@ -33,7 +33,7 @@ public class Keyboard {
                 break;
         }
 
-
         return color;
+
     }
 }
