@@ -3,16 +3,32 @@
  */
 public class Party {
     int numberOfPlayer;
+
+    Player player1;
+    Player player2;
+    Player player3;
+    Player player4;
+    IA IA1;
+    IA IA2;
+    Board board
+
+
     Boolean over;
 
     public Party() {
 
     }
 
-    public void Start() { //une partie avec un joueur et une ia
-        Board board = new Board();
-        Player player1 = new Player();
-        IA ia = new IA();
+
+    public void Start(Party party) { //une partie avec un joueur et une ia
+
+        over=false;
+        board.display();
+        while (over){
+            player1.play(board);
+            IA.play(board);
+            over =
+        }
 
     }
 
