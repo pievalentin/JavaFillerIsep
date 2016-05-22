@@ -37,9 +37,12 @@ public class Board {
 
 
 		for (int i = 0; i < tokens.length; i++ ) {
-
+			System.out.println();
 			for (int j = 0; j < size; j++) {
-				System.out.println(Colors.colorsToString(tokens[i][j].getColor()));
+				if (!tokens[i][j].isPossesed())
+				System.out.print(Colors.colorsToString(tokens[i][j].getColor()).toLowerCase()+" ");
+				else
+					System.out.print(Colors.colorsToString(tokens[i][j].getColor())+" ");
 			}
 
 		}
