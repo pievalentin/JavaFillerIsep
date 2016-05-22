@@ -2,50 +2,50 @@
  * Created by Pierre Valentin on 17/05/2016.
  */
 public class Token {
-	private Colors color;
-	private Player owner;
-	boolean possesed;
-	
-	public void eat(Player player){
-		if(possesed==false){
-			owner=player;
-			possesed=true;
-		}
-	}
+    private Colors color;
+    private Player owner;
+    boolean possesed;
 
-	public Token(Colors color, Player owner, boolean possesed) {
-		this.color = color;
-		this.owner = owner;
-		this.possesed = possesed;
-	}
+    public void eat(Player player) {
+        if (possesed == false) {
+            owner = player;
+            possesed = true;
+        }
+    }
 
-	public Token(Colors color, boolean possesed) {
-		this.color = color;
-		this.possesed = possesed;
-	}
+    public Token(Colors color, Player owner, boolean possesed) {
+        this.color = color;
+        this.owner = owner;
+        this.possesed = possesed;
+    }
 
-	public Colors getColor() {
-		return color;
-	}
+    public Token(Colors color, boolean possesed) {
+        this.color = color;
+        this.possesed = possesed;
+    }
 
-	public void setColor(Colors color) {
-		this.color = color;
-	}
+    public Colors getColor() {
+        return color;
+    }
 
-	public Player getOwner() {
-		return owner;
-	}
+    public void setColor(Colors color) {
+        this.color = color;
+    }
 
-	public void setOwner(Player owner) {
-		this.owner = owner;
-	}
+    public Player getOwner() {
+        return owner;
+    }
 
-	public boolean isPossesed() {
-		return possesed;
-	}
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
 
-	public void setPossesed(boolean possesed) {
-		this.possesed = possesed;
-	}
+    public boolean isPossesed() {
+        return possesed;
+    }
+
+    public void setPossesed(boolean possesed) {
+        this.possesed = possesed;
+    }
 }
 

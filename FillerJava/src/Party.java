@@ -23,9 +23,9 @@ public class Party {
 
     public void Start(Party party) { //une partie avec un joueur et une ia
 
-        over=false;
+        over = false;
         //board.display();
-        while (over){
+        while (over) {
             player1.play(board);
             //IA.play(board);
             over = isOver(board);
@@ -33,10 +33,9 @@ public class Party {
 
     }
 
-    public boolean isOver(Board board){
+    public boolean isOver(Board board) {
         Boolean result;
         result = false;
-
 
 
         return result;

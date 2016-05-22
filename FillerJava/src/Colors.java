@@ -12,32 +12,32 @@ public enum Colors {
     BLUE,
     VIOLET;
 
-    public static Colors randomColor(){
+    public static Colors randomColor() {
         Colors[] color = Colors.values();
         Random generator = new Random();
         return color[generator.nextInt(color.length)];
     }
 
-    public static String colorsToString(Colors color){
-        String result = "not set" ;
-        switch (color){
+    public static String colorsToString(Colors color) {
+        String result = "not set";
+        switch (color) {
             case RED:
-                result="R";
+                result = "R";
                 break;
             case GREEN:
-                result="G";
+                result = "G";
                 break;
             case BLUE:
-                result="B";
+                result = "B";
                 break;
             case YELLOW:
-                result="Y";
+                result = "Y";
                 break;
             case ORANGE:
-                result="O";
+                result = "O";
                 break;
             case VIOLET:
-                result="V";
+                result = "V";
                 break;
         }
 
