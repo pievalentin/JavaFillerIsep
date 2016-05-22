@@ -5,8 +5,8 @@ public class IA extends Player {
     String name;
     Score score;
 
-    public void play (Board board; Colors color){
+    /*public void play (Board board; Colors color){
 
     }
-
+*/
 }

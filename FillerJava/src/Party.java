@@ -24,17 +24,18 @@ public class Party {
     public void Start(Party party) { //une partie avec un joueur et une ia
 
         over=false;
-        board.display();
+        //board.display();
         while (over){
             player1.play(board);
-            IA.play(board);
+            //IA.play(board);
             over = isOver(board);
         }
 
     }
 
     public boolean isOver(Board board){
-        Boolean result = fasle;
+        Boolean result;
+        result = false;
 
 
 

@@ -12,6 +12,29 @@ public class Token {
 			possesed=true;
 		}
 	}
-	
-	
+
+	public Colors getColor() {
+		return color;
+	}
+
+	public void setColor(Colors color) {
+		this.color = color;
+	}
+
+	public Player getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Player owner) {
+		this.owner = owner;
+	}
+
+	public boolean isPossesed() {
+		return possesed;
+	}
+
+	public void setPossesed(boolean possesed) {
+		this.possesed = possesed;
+	}
 }
+

@@ -19,7 +19,11 @@ public class Player {
 		answer = Keyboard.askString();
 		color = Keyboard.stringToColor(answer);
 		return color;
+
 	}
+
+
+
 
 
 
