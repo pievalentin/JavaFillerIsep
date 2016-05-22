@@ -13,6 +13,17 @@ public class Token {
 		}
 	}
 
+	public Token(Colors color, Player owner, boolean possesed) {
+		this.color = color;
+		this.owner = owner;
+		this.possesed = possesed;
+	}
+
+	public Token(Colors color, boolean possesed) {
+		this.color = color;
+		this.possesed = possesed;
+	}
+
 	public Colors getColor() {
 		return color;
 	}

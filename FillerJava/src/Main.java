@@ -7,6 +7,7 @@ public class Main {
 		// TODO Auto-generated method stub
 	System.out.println("Bienvenue dans Filler version minimal ");
 		Board board = new Board(3);
+		//board.onedisplay();
 		board.displayConsole();
 
 	}

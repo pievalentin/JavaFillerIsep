@@ -20,36 +20,34 @@ public class Board {
 	}
 
 	public void initializeBoard(){
-		for (Token[] array: tokens
-			 ) {
-			for (Token token: array
-				 ) {
-					token = new Token();
-					//System.out.println("hello");
-					token.setColor(Colors.randomColor());
-					System.out.println(Colors.colorsToString(token.getColor()));
-					token.setPossesed(false);
+
+		for (int i = 0; i < tokens.length; i++ ) {
+
+			for (int j = 0; j < tokens.length; j++) {
+				tokens[i][j] = new Token(Colors.randomColor(),false);
+
 
 			}
-			
+
 		}
 		
 	}
 
 	public void displayConsole(){
-		for (Token[] array: tokens
-				) {
 
-			System.out.println("pass one line");
 
-			for (Token token: array
-					) {
-				System.out.println(Colors.colorsToString(token.getColor()));
+		for (int i = 0; i < tokens.length; i++ ) {
 
+			for (int j = 0; j < size; j++) {
+				System.out.println(Colors.colorsToString(tokens[i][j].getColor()));
 			}
 
 		}
 
+	}
+
+	public void onedisplay(){
+		System.out.println(Colors.colorsToString(tokens[2][2].getColor()));
 	}
 
 
