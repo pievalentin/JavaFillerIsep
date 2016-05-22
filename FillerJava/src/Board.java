@@ -19,7 +19,7 @@ public class Board {
 
     }
 
-    public void initializeBoard() {
+    private void initializeBoard() {
 
         for (int i = 0; i < tokens.length; i++) {
 
