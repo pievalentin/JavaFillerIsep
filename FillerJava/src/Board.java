@@ -25,8 +25,6 @@ public class Board {
 
             for (int j = 0; j < tokens.length; j++) {
                 tokens[i][j] = new Token(Colors.randomColor(), false);
-
-
             }
 
         }

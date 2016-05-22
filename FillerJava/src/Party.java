@@ -21,11 +21,11 @@ public class Party {
     }
 
 
-    public void Start(Party party) { //une partie avec un joueur et une ia
+    public void Start() { //une partie avec un joueur et une ia
 
         over = false;
         //board.display();
-        while (over) {
+        while (!over) {
             player1.play(board);
             //IA.play(board);
             over = isOver(board);
