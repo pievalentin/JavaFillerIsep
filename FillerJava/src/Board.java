@@ -1,10 +1,10 @@
-/**
- * Created by Pierre Valentin on 19/04/2016.
- */
+import java.awt.*;
+
 public class Board {
     private int numberOfPlayer;
     private Token[][] tokens;
     private int size;
+    public Graphics g;
 
 
     public Board(int size) {
@@ -49,7 +49,7 @@ public class Board {
 
     }
 
-    public void onedisplay() {
+    public void oneDisplay() {
         System.out.println(Colors.colorsToString(tokens[2][2].getColor()));
     }
 
