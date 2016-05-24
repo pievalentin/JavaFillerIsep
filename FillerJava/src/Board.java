@@ -4,10 +4,18 @@
 public class Board {
     private int numberOfPlayer;
     private Token[][] tokens;
-    private int size;
+    private double size;
 
     public Token[][] getTokens() {
         return tokens;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public Board(int size) {
@@ -102,6 +110,11 @@ public class Board {
             }
         }
         return result;
+    }
+
+    public String[] overHalf(){
+        String[] result = new String[1];
+
     }
 
 }

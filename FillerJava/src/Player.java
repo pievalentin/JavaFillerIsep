@@ -18,6 +18,11 @@ public class Player {
         this.startX = startX;
     }
 
+    public void updateScore(Board board){
+        double result =  score.calculateScore(board);
+        score.setScore(result);
+    }
+
     public void play(Board board) {
         Colors color;
         color = askColor();
@@ -37,6 +42,8 @@ public class Player {
     }
 
 
+
+
     public String getNom() {
         return Nom;
     }
@@ -45,8 +52,8 @@ public class Player {
         Nom = nom;
     }
 
-    public Score getScore() {
-        return score;
+    public double getScore() {
+        return score.getScore();
     }
 
     public void setScore(Score score) {
