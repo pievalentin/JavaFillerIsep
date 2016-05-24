@@ -4,7 +4,7 @@
 public class Board {
     private int numberOfPlayer;
     private Token[][] tokens;
-    private double size;
+    private int size;
 
     public Token[][] getTokens() {
         return tokens;
@@ -65,7 +65,7 @@ public class Board {
 
     }
 
-    private void initializeBoard() {
+    public void initializeBoard() {
 
         /*[0][0]  le premier indice définis la ligne.
           [1][0]  le deuxième définis la colone.
@@ -112,9 +112,5 @@ public class Board {
         return result;
     }
 
-    public String[] overHalf(){
-        String[] result = new String[1];
-
-    }
 
 }

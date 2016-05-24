@@ -16,18 +16,24 @@ public class Party {
     Boolean over;
     String winner;
 
-    public Party() {
-
+    public Party(int sizeBoard) {
+        board.setSize(sizeBoard);
+        board.initializeBoard();
+        start();
     }
 
 
-    public void Start() { //une partie avec un joueur et une ia
+    public void start() { //une partie avec un joueur et une IA
         double maxScore = board.getSize()*board.getSize();
         over = false;
-        //board.display();
+        player1.setStartI(board.getSize()); player1.setStartJ(0);
+        IA1.setStartI(0); IA1.setStartJ(board.getSize());
+
+
         while (!over) {
-            board.setStartingPoint(player1, board.getSize(), 0);
-            board.setStartingPoint(IA1,0,board.getSize());
+
+            board.setStartingPoint(player1, player1.getStartI(), player1.getStartJ());
+            board.setStartingPoint(IA1,IA1.getStartI(),IA1.getStartJ());
             player1.play(board);
             player1.updateScore(board);
             board.displayConsole();
