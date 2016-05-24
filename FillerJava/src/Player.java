@@ -1,13 +1,32 @@
 
 public class Player {
 
+
     private String Nom;
     private Score score;
+    private int startX;
+    private int startY;
+
+    public Player(String nom, int startX, int startY) {
+        Nom = nom;
+        this.startX = startX;
+        this.startY = startY;
+    }
+
+    public Player(int startY, int startX) {
+        this.startY = startY;
+        this.startX = startX;
+    }
+
+    public void updateScore(Board board){
+        double result =  score.calculateScore(board);
+        score.setScore(result);
+    }
 
     public void play(Board board) {
         Colors color;
         color = askColor();
-        Board.take(color, this);
+        board.take(color, this);
 
 
     }
@@ -23,6 +42,8 @@ public class Player {
     }
 
 
+
+
     public String getNom() {
         return Nom;
     }
@@ -31,8 +52,8 @@ public class Player {
         Nom = nom;
     }
 
-    public Score getScore() {
-        return score;
+    public double getScore() {
+        return score.getScore();
     }
 
     public void setScore(Score score) {
