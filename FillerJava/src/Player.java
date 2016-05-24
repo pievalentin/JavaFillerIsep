@@ -7,7 +7,7 @@ public class Player {
     public void play(Board board) {
         Colors color;
         color = askColor();
-        Board.take(color, this);
+        board.take(color, this);
 
 
     }

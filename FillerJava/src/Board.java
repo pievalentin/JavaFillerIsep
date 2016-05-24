@@ -6,6 +6,9 @@ public class Board {
     private Token[][] tokens;
     private int size;
 
+    public Token[][] getTokens() {
+        return tokens;
+    }
 
     public Board(int size) {
         this.size = size;
@@ -15,14 +18,37 @@ public class Board {
 
     }
 
-    public static void take(Colors color, Player player) {
-        for (int i = 0; i < tokens.length; i++) {
+    public void setStartingPoint(Player player, int i, int j) {
+        tokens[i][j].setOwner(player);
+        tokens[i][j].setPossesed(true);
 
-            for (int j = 0; j < tokens.length; j++) {
+    }
+
+    public void take(Colors color, Player player) {
+        for (int i = 0; i < getTokens().length; i++) {
+
+            for (int j = 0; j < getTokens().length; j++) {
                 if (tokens[i][j].getOwner() == player) {
-
-                    if (!tokens[i][j].isPossesed() && tokens[i][j].getColor() == color) {
-
+                    tokens[i][j].setColor(color);
+                    if (!tokens[i - 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
+                        tokens[i - 1][j].setColor(color);
+                        tokens[i - 1][j].setPossesed(true);
+                        tokens[i - 1][j].setOwner(player);
+                    }
+                    if (!tokens[i][j - 1].isPossesed() && tokens[i][j - 1].getColor() == color) {
+                        tokens[i][j - 1].setColor(color);
+                        tokens[i][j - 1].setPossesed(true);
+                        tokens[i][j - 1].setOwner(player);
+                    }
+                    if (!tokens[i][j + 1].isPossesed() && tokens[i][j + 1].getColor() == color) {
+                        tokens[i][j + 1].setColor(color);
+                        tokens[i][j + 1].setPossesed(true);
+                        tokens[i][j + 1].setOwner(player);
+                    }
+                    if (!tokens[i + 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
+                        tokens[i + 1][j].setColor(color);
+                        tokens[i + 1][j].setPossesed(true);
+                        tokens[i + 1][j].setOwner(player);
                     }
                 }
 
@@ -53,7 +79,7 @@ public class Board {
 
         for (int i = 0; i < tokens.length; i++) {
             System.out.println();
-            for (int j = 0; j < size; j++) {
+            for (int j = 0; j < tokens.length; j++) {
                 if (!tokens[i][j].isPossesed())
                     System.out.print(Colors.colorsToString(tokens[i][j].getColor()).toLowerCase() + " ");
                 else
@@ -68,5 +94,16 @@ public class Board {
         System.out.println(Colors.colorsToString(tokens[2][2].getColor()));
     }
 
+    public double calculateOwnership(Player player) {
+        double result = 0;
+        for (int i = 0; i < tokens.length; i++) {
+            for (int j = 0; j < tokens.length; j++) {
+                if (tokens[i][j].getOwner() == player)
+                    result = +1;
+
+            }
+        }
+        return result;
+    }
 
 }
