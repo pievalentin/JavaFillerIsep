@@ -4,18 +4,18 @@ public class Player {
 
     private String Nom;
     private Score score;
-    private int startX;
-    private int startY;
+    private int startI;
+    private int startJ;
 
-    public Player(String nom, int startX, int startY) {
+    public Player(String nom, int startI, int startJ) {
         Nom = nom;
-        this.startX = startX;
-        this.startY = startY;
+        this.startI = startI;
+        this.startJ = startJ;
     }
 
-    public Player(int startY, int startX) {
-        this.startY = startY;
-        this.startX = startX;
+    public Player(int startI, int startJ) {
+        this.startI = startI;
+        this.startJ = startJ;
     }
 
     public void updateScore(Board board){
@@ -42,7 +42,21 @@ public class Player {
     }
 
 
+    public int getStartI() {
+        return startX;
+    }
 
+    public void setStartI(int startX) {
+        this.startX = startX;
+    }
+
+    public int getStartJ() {
+        return startY;
+    }
+
+    public void setStartJ(int startY) {
+        this.startY = startY;
+    }
 
     public String getNom() {
         return Nom;
