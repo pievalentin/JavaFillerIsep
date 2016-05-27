@@ -34,7 +34,7 @@ public class Player {
     public static Colors askColor() {
         String answer;
         Colors color;
-        System.out.println("choissisez une couleur : ");
+        System.out.println("choisissez une couleur : ");
         answer = Keyboard.askString();
         color = Keyboard.stringToColor(answer);
         return color;
