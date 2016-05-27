@@ -29,13 +29,39 @@ public class Board {
     public void setStartingPoint(Player player, int i, int j) {
         tokens[i][j].setOwner(player);
         tokens[i][j].setPossesed(true);
-
     }
 
     public void take(Colors color, Player player) {
+
+        //TODO eliminer les trucs du coté.
+
         for (int i = 0; i < getTokens().length; i++) {
 
             for (int j = 0; j < getTokens().length; j++) {
+                //sur le haut.
+                if (i == 0) {
+                    if (tokens[i][j].getOwner() == player) {
+                        tokens[i][j].setColor(color);
+                        if (!tokens[i - 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
+                        }
+                    }
+
+
+                    //sur le bas
+
+
+                    //sur la droite
+
+
+                    //sur la gauche
+
+
+                    //dans le centre
+
+
+
+
+
                 if (tokens[i][j].getOwner() == player) {
                     tokens[i][j].setColor(color);
                     if (!tokens[i - 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
@@ -66,10 +92,10 @@ public class Board {
     }
 
     public void initializeBoard() {
-
-        /*[0][0]  le premier indice définis la ligne.
-          [1][0]  le deuxième définis la colone.
-          [2][0]*/
+        /*   i
+          j [0][0]  le premier indice définis la ligne.
+            [1][0]  le deuxième définis la colone.
+            [2][0]*/
 
         for (int i = 0; i < tokens.length; i++) {
 
@@ -80,6 +106,15 @@ public class Board {
         }
 
     }
+
+    public Token[] voisin() {
+        Token[] result;
+
+
+        return result;
+    }
+
+}
 
     public void displayConsole() {
 
