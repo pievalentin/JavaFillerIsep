@@ -5,18 +5,20 @@ public class IA extends Player {
     String name;
     Score score;
 
-    public IA(String nom, int startX, int startY) {
-        super(nom, startX, startY);
+    public IA(int startX, int startY) {
+        super(startX, startY);
     }
 
-    public IA(int startI, int startJ) {
-        super();
+    public void play(Board board) {
+        Colors color;
+        color = decideColor1();
+        board.take(color, this);
     }
 
     public Colors decideColor1(){
         Colors color;
-
-
+        color = Colors.randomColor();
+        return color;
     }
 
 }

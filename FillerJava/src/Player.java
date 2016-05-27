@@ -1,14 +1,16 @@
-
+/**
+ * Created by Pierre Valentin on 17/05/2016.
+ */
 public class Player {
 
 
-    private String Nom;
+    private String name;
     private Score score;
     private int startI;
     private int startJ;
 
-    public Player(String nom, int startI, int startJ) {
-        Nom = nom;
+    public Player(String name, int startI, int startJ) {
+        this.name = name;
         this.startI = startI;
         this.startJ = startJ;
     }
@@ -43,27 +45,27 @@ public class Player {
 
 
     public int getStartI() {
-        return startX;
+        return startI;
     }
 
     public void setStartI(int startX) {
-        this.startX = startX;
+        this.startI = startX;
     }
 
     public int getStartJ() {
-        return startY;
+        return startJ;
     }
 
     public void setStartJ(int startY) {
-        this.startY = startY;
+        this.startJ = startY;
     }
 
-    public String getNom() {
-        return Nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        Nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getScore() {

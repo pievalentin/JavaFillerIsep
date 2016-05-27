@@ -70,6 +70,7 @@ public class Board {
         /*[0][0]  le premier indice définis la ligne.
           [1][0]  le deuxième définis la colone.
           [2][0]*/
+
         for (int i = 0; i < tokens.length; i++) {
 
             for (int j = 0; j < tokens.length; j++) {
