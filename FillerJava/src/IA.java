@@ -9,6 +9,10 @@ public class IA extends Player {
         super(nom, startX, startY);
     }
 
+    public IA(int startI, int startJ) {
+        super();
+    }
+
     public Colors decideColor1(){
         Colors color;
 
