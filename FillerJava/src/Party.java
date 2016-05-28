@@ -14,7 +14,6 @@ public class Party {
         for (int i = 0; i <nbPLayer-nbIA ; i++) {
 
             if (i == 0) {
-                System.out.println(listPlayers[0]);
                 listPlayers[i] = new Player(sizeBoard - 1, 0);
                 listPlayers[i].setName("player" + i);
             }
@@ -53,6 +52,7 @@ public class Party {
                 listPlayers[i].setName("IA" + i);
             }
         board.initializeBoard();
+            System.out.println(board.getTokens().length);
         start();
         }
     }

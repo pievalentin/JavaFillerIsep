@@ -6,10 +6,11 @@ public class Token {
     private Player owner;
     boolean possesed;
 
-    public void eat(Player player) {
+    public void eat(Player player, Colors color) {
         if (possesed == false) {
-            owner = player;
-            possesed = true;
+            this.owner = player;
+            this.possesed = true;
+            this.color = color;
         }
     }
 
