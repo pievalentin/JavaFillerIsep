@@ -7,7 +7,7 @@ public class Token {
     boolean possesed;
 
     public boolean eat(Player player, Colors color) {
-        if (this.getOwner() == player) {
+        if (this.getOwner() == player && this.getColor()!=color) {
             this.owner = player;
             this.possesed = true;
             this.color = color;

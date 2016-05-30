@@ -81,7 +81,7 @@ public class Party {
                 System.out.println();
 
                 for (Player key: listPlayers) {
-                    System.out.println(player.getName() + " :" + key.getScore());
+                    System.out.println(key.getName() + " :" + key.getScore());
                 }
             }
 
