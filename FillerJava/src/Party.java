@@ -68,6 +68,7 @@ public class Party {
             Colors startColor = board.getTokens()[player.getStartI()][player.getStartJ()].getColor();
             player.setPlayerColor(startColor);
             player.play(board,player.getPlayerColor());
+            player.updateScore(board);
         }
 
         board.displayConsole();

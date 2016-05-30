@@ -3,7 +3,7 @@
  */
 public class IA extends Player {
     String name;
-    Score score;
+    int score;
 
     public IA(int startX, int startY) {
         super(startX, startY);

@@ -102,15 +102,13 @@ public class Board {
 
     }
 
-    public void onedisplay() {
-        System.out.println(Colors.colorsToString(tokens[2][2].getColor()));
-    }
+
 
     public int calculateOwnership(Player player) {
         int result = 0;
 
-        for (int i = 0; i < size - 1; i++) {
-            for (int j = 0; j < size - 1; j++) {
+        for (int i = 0; i < size ; i++) {
+            for (int j = 0; j < size ; j++) {
                 if (tokens[i][j].getOwner() == player)
                     result = result + 1;
 
@@ -118,6 +116,10 @@ public class Board {
         }
         return result;
     }
+
+    /*public void onedisplay() {
+        System.out.println(Colors.colorsToString(tokens[2][2].getColor()));
+    }*/
 
 
 }

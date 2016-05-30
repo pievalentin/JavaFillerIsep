@@ -5,7 +5,7 @@ public class Player {
 
 
     private String name;
-    private Score score;
+    private int score;
     private int startI;
     private int startJ;
     private Colors playerColor;
@@ -17,17 +17,17 @@ public class Player {
 
         this.startI = startI;
         this.startJ = startJ;
-        this.score = new Score(this);
+        this.score = 0;
     }
 
     public Player(int startI, int startJ) {
         this.startI = startI;
         this.startJ = startJ;
-        this.score = new Score(this);
+        this.score = 0;
     }
 
     public void updateScore(Board board){
-        score.setScore(score.calculateScore(board));
+        this.setScore(board.calculateOwnership(this));
     }
 
     public void play(Board board, Player[] list) {
@@ -91,11 +91,11 @@ public class Player {
         this.name = name;
     }
 
-    public double getScore() {
-        return score.getScore();
+    public int getScore() {
+        return score;
     }
 
-    public void setScore(Score score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
