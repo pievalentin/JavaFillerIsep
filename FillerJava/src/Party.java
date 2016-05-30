@@ -79,9 +79,8 @@ public class Party {
                 player.updateScore(board);
                 board.displayConsole();
 
-                for (int i = 0; i < listPlayers.length; i++) {
-                    System.out.println("score de player" + i + ": " + player.getScore());
-
+                for (Player key: listPlayers) {
+                    System.out.println("score de player: " + key.getScore());
                 }
             }
 

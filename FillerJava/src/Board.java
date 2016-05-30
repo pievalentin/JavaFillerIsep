@@ -6,6 +6,14 @@ public class Board {
     private Token[][] tokens;
     private int size;
 
+    public Board(int size) {
+        this.size = size;
+        this.tokens = new Token[size][size];
+        initializeBoard();
+
+
+    }
+
     public Token[][] getTokens() {
         return tokens;
     }
@@ -18,14 +26,6 @@ public class Board {
         this.size = size;
     }
 
-    public Board(int size) {
-        this.size = size;
-        this.tokens = new Token[size][size];
-        initializeBoard();
-
-
-    }
-
     public void setStartingPoint(Player player, int i, int j) {
         tokens[i][j].setOwner(player);
         tokens[i][j].setPossesed(true);
@@ -35,64 +35,46 @@ public class Board {
 
         //TODO eliminer les trucs du coté.
 
-        for (int i = 0; i <= size; i++) {
+        for (int i = 0; i < size; i++) {
 
-            for (int j = 0; j <= size; j++) {
+            for (int j = 0; j < size; j++) {
 
-                if (i == 0) {                                   /* ============ ligne du haut ============ */
-                    if (tokens[i][j].getOwner() == player) {
-                        tokens[i][j].setColor(color);
-                        /*if (!tokens[i - 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i - 1][j].eat(player, color);
-                        }*/
-                        if (!tokens[i][j - 1].isPossesed() && tokens[i][j - 1].getColor() == color) {
-                            tokens[i][j - 1].eat(player, color);
-                        }
-                        if (!tokens[i][j + 1].isPossesed() && tokens[i][j + 1].getColor() == color) {
-                            tokens[i][j + 1].eat(player, color);
-                        }
-                        if (!tokens[i + 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i + 1][j].eat(player, color);
-                        }
-                    }
-                }//fin haut
-
-
-                if (i == size) {     /* ============ ligne du bas ============ */
+                /*if (i==0 && j==0){
                     if (tokens[i][j].getOwner() == player) {
                         tokens[i][j].setColor(color);
 
-                        if (!tokens[i - 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i - 1][j].eat(player, color);
-                        }
-                        if (!tokens[i][j - 1].isPossesed() && tokens[i][j - 1].getColor() == color) {
-                            tokens[i][j - 1].eat(player, color);
-                        }
-                        if (!tokens[i][j + 1].isPossesed() && tokens[i][j + 1].getColor() == color) {
-                            tokens[i][j + 1].eat(player, color);
-                        }
-                        /*if (!tokens[i + 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i + 1][j].eat(player, color);
-                        }*/
+                }*/
+
+
+                if (i == 0) {
+                    if (tokens[i][j].getOwner() == player) {/* ============ ligne du haut ============ */
+                    /*tokens[i - 1][j].eat(player, color);*/
+                        tokens[i][j - 1].eat(player, color);
+                        tokens[i][j + 1].eat(player, color);
+                        tokens[i + 1][j].eat(player, color);
+
+                    }}//fin haut
+
+
+                if (i == size - 1) {     /* ============ ligne du bas ============ */
+                    if (tokens[i][j].getOwner() == player) {
+                        tokens[i][j].setColor(color);
+                        tokens[i - 1][j].eat(player, color);
+                        tokens[i][j - 1].eat(player, color);
+                        tokens[i][j + 1].eat(player, color);
+                        // tokens[i + 1][j].eat(player, color);
                     }
                 }// fin pour le bas
 
 
-                if (j == size) {    /* ============ coté droit ============ */
+                if (j == size - 1) {    /* ============ coté droit ============ */
                     if (tokens[i][j].getOwner() == player) {
                         tokens[i][j].setColor(color);
-                        if (!tokens[i - 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i - 1][j].eat(player, color);
-                        }
-                        if (!tokens[i][j - 1].isPossesed() && tokens[i][j - 1].getColor() == color) {
-                            tokens[i][j - 1].eat(player, color);
-                        }
-                        /*if (!tokens[i][j + 1].isPossesed() && tokens[i][j + 1].getColor() == color) {
-                            tokens[i][j + 1].eat(player, color);
-                        }*/
-                        if (!tokens[i + 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i + 1][j].eat(player, color);
-                        }
+                        tokens[i - 1][j].eat(player, color);
+                        tokens[i][j - 1].eat(player, color);
+                        // tokens[i][j + 1].eat(player, color);
+                        tokens[i + 1][j].eat(player, color);
+
                     }
                 }// fin coté droit
 
@@ -100,18 +82,11 @@ public class Board {
                 if (j == 0) {   /* ============ coté gauche ============ */
                     if (tokens[i][j].getOwner() == player) {
                         tokens[i][j].setColor(color);
-                        if (!tokens[i - 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i - 1][j].eat(player, color);
-                        }
-                        /*if (!tokens[i][j - 1].isPossesed() && tokens[i][j - 1].getColor() == color) {
-                            tokens[i][j - 1].eat(player, color);
-                        }*/
-                        if (!tokens[i][j + 1].isPossesed() && tokens[i][j + 1].getColor() == color) {
-                            tokens[i][j + 1].eat(player, color);
-                        }
-                        if (!tokens[i + 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i + 1][j].eat(player, color);
-                        }
+                        tokens[i - 1][j].eat(player, color);
+                        // tokens[i][j - 1].eat(player, color);
+                        tokens[i][j + 1].eat(player, color);
+                        tokens[i + 1][j].eat(player, color);
+
                     }
                 }// fin coté gauche
 
@@ -119,23 +94,17 @@ public class Board {
                 //dans le centre
                 else {                                   /* ============ Au centre ============ */
                     if (tokens[i][j].getOwner() == player) {
-                        if (!tokens[i - 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i - 1][j].eat(player, color);
-                        }
-                        if (!tokens[i][j - 1].isPossesed() && tokens[i][j - 1].getColor() == color) {
-                            tokens[i][j - 1].eat(player, color);
-                        }
-                        if (!tokens[i][j + 1].isPossesed() && tokens[i][j + 1].getColor() == color) {
-                            tokens[i][j + 1].eat(player, color);
-                        }
-                        if (!tokens[i + 1][j].isPossesed() && tokens[i - 1][j].getColor() == color) {
-                            tokens[i + 1][j].eat(player, color);
-                        }
+
+                        tokens[i - 1][j].eat(player, color);
+                        tokens[i][j - 1].eat(player, color);
+                        tokens[i][j + 1].eat(player, color);
+                        tokens[i + 1][j].eat(player, color);
                     }
                 }
             }
         }
     }
+
 
 
 
@@ -226,7 +195,6 @@ public class Board {
         }
 
 
-
         return result;
     }
 
@@ -265,3 +233,6 @@ public class Board {
 
 
 }
+
+
+
