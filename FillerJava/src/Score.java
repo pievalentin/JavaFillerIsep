@@ -5,6 +5,10 @@ public class Score {
     double score;
     Player player;
 
+    public Score(Player player) {
+        this.player = player;
+    }
+
     public double calculateScore(Board board) {
         double result;
         result = board.calculateOwnership(player);

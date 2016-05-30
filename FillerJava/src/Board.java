@@ -35,74 +35,134 @@ public class Board {
 
         //TODO eliminer les trucs du coté.
 
-        for (int i = 0; i < size; i++) {
+        int changeNew;
+        int changeOld;
 
-            for (int j = 0; j < size; j++) {
+        do {
+            changeNew = 0;
+            //===============================================================================================
 
-                /*if (i==0 && j==0){
-                    if (tokens[i][j].getOwner() == player) {
-                        tokens[i][j].setColor(color);
+            for (int i = 0; i < size; i++) {
 
-                }*/
+                for (int j = 0; j < size; j++) {
+
+                    if (i == 0 && j == 0) {
+                        if (tokens[i][j].getOwner() == player) {
+                            tokens[i][j].setColor(color);
+                            tokens[i + 1][j].eat(player, color);
+                            tokens[i][j + 1].eat(player, color);
+
+                        }
+                    }
+
+                    if (i == size - 1 && j == 0) {
+                        if (tokens[i][j].getOwner() == player) {
+                            tokens[i][j].setColor(color);
+                            tokens[i - 1][j].eat(player, color);
+                            tokens[i][j + 1].eat(player, color);
+
+                        }
+                    }
 
 
-                if (i == 0) {
-                    if (tokens[i][j].getOwner() == player) {/* ============ ligne du haut ============ */
+                    if (i == 0 && j == size - 1) {
+                        if (tokens[i][j].getOwner() == player) {
+                            tokens[i][j].setColor(color);
+                            tokens[i][j - 1].eat(player, color);
+                            tokens[i + 1][j].eat(player, color);
+
+                        }
+                    }
+
+                    if (i == size - 1 && j == size - 1) {
+                        if (tokens[i][j].getOwner() == player) {
+                            tokens[i][j].setColor(color);
+                            tokens[i - 1][j].eat(player, color);
+                            tokens[i][j - 1].eat(player, color);
+
+                        }
+                    }
+
+
+                    if (i == 0) {
+                        if (tokens[i][j].getOwner() == player) {/* ============ ligne du haut ============ */
                     /*tokens[i - 1][j].eat(player, color);*/
-                        tokens[i][j - 1].eat(player, color);
-                        tokens[i][j + 1].eat(player, color);
-                        tokens[i + 1][j].eat(player, color);
+                            if (j != 0)
+                                tokens[i][j - 1].eat(player, color);
+                            if (j != size - 1)
+                                tokens[i][j + 1].eat(player, color);
+                            if (i != size - 1)
+                                tokens[i + 1][j].eat(player, color);
 
-                    }}//fin haut
+                        }
+                    }//fin haut
 
 
-                if (i == size - 1) {     /* ============ ligne du bas ============ */
+                    if (i == size - 1) {     /* ============ ligne du bas ============ */
+                        if (tokens[i][j].getOwner() == player) {
+                            tokens[i][j].setColor(color);
+                            if (i != 0)
+                                tokens[i - 1][j].eat(player, color);
+                            if (j != 0)
+                                tokens[i][j - 1].eat(player, color);
+                            if (j != size - 1)
+                                tokens[i][j + 1].eat(player, color);
+                            // tokens[i + 1][j].eat(player, color);
+                        }
+                    }// fin pour le bas
+
+
+                    if (j == size - 1) {    /* ============ coté droit ============ */
+                        if (tokens[i][j].getOwner() == player) {
+                            tokens[i][j].setColor(color);
+                            if (i != 0)
+                                tokens[i - 1][j].eat(player, color);
+                            if (j != 0)
+                                tokens[i][j - 1].eat(player, color);
+                            // tokens[i][j + 1].eat(player, color);
+                            if (i != size - 1)
+                                tokens[i + 1][j].eat(player, color);
+
+                        }
+                    }// fin coté droit
+
+
+                    if (j == 0) {   /* ============ coté gauche ============ */
+                        if (tokens[i][j].getOwner() == player) {
+                            tokens[i][j].setColor(color);
+                            if (i != 0)
+                                tokens[i - 1][j].eat(player, color);
+                            // tokens[i][j - 1].eat(player, color);
+                            if (j != size - 1)
+                                tokens[i][j + 1].eat(player, color);
+                            if (i != size - 1)
+                                tokens[i + 1][j].eat(player, color);
+
+                        }
+                    }// fin coté gauche
+
+
+                    //dans le centre
+                    //if(0 < i < size - 1 ) {                                   /* ============ Au centre ============ */
                     if (tokens[i][j].getOwner() == player) {
-                        tokens[i][j].setColor(color);
-                        tokens[i - 1][j].eat(player, color);
-                        tokens[i][j - 1].eat(player, color);
-                        tokens[i][j + 1].eat(player, color);
-                        // tokens[i + 1][j].eat(player, color);
-                    }
-                }// fin pour le bas
-
-
-                if (j == size - 1) {    /* ============ coté droit ============ */
-                    if (tokens[i][j].getOwner() == player) {
-                        tokens[i][j].setColor(color);
-                        tokens[i - 1][j].eat(player, color);
-                        tokens[i][j - 1].eat(player, color);
-                        // tokens[i][j + 1].eat(player, color);
-                        tokens[i + 1][j].eat(player, color);
-
-                    }
-                }// fin coté droit
-
-
-                if (j == 0) {   /* ============ coté gauche ============ */
-                    if (tokens[i][j].getOwner() == player) {
-                        tokens[i][j].setColor(color);
-                        tokens[i - 1][j].eat(player, color);
-                        // tokens[i][j - 1].eat(player, color);
-                        tokens[i][j + 1].eat(player, color);
-                        tokens[i + 1][j].eat(player, color);
-
-                    }
-                }// fin coté gauche
-
-
-                //dans le centre
-                else {                                   /* ============ Au centre ============ */
-                    if (tokens[i][j].getOwner() == player) {
-
-                        tokens[i - 1][j].eat(player, color);
-                        tokens[i][j - 1].eat(player, color);
-                        tokens[i][j + 1].eat(player, color);
-                        tokens[i + 1][j].eat(player, color);
+                        if (i != 0)
+                            tokens[i - 1][j].eat(player, color);
+                        if (j != 0)
+                            tokens[i][j - 1].eat(player, color);
+                        if (j != size - 1)
+                            tokens[i][j + 1].eat(player, color);
+                        if (i != size - 1)
+                            tokens[i + 1][j].eat(player, color);
+                        //}
                     }
                 }
             }
-        }
+
+
+            //===========================================================================================
+            changeOld = changeNew;
+        } while (changeNew != changeOld && changeNew != 0);
+
     }
 
 

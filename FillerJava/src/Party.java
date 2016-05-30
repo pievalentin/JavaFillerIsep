@@ -51,15 +51,15 @@ public class Party {
                 listPlayers[i] = new Player(sizeBoard - 1, sizeBoard - 1);
                 listPlayers[i].setName("IA" + i);
             }
-        board.initializeBoard();
-            System.out.println(board.getTokens().length);
+
+            //System.out.println(board.getTokens().length);
         start();
         }
     }
 
 
     public void start() { //une partie avec un joueur et une IA
-        double maxScore = board.getSize()*board.getSize();
+        double maxScore = board.getTokens().length * board.getTokens().length;
         over = false;
 
         for (Player player: listPlayers

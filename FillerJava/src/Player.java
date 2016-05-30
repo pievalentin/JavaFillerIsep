@@ -13,11 +13,13 @@ public class Player {
         this.name = name;
         this.startI = startI;
         this.startJ = startJ;
+        this.score = new Score(this);
     }
 
     public Player(int startI, int startJ) {
         this.startI = startI;
         this.startJ = startJ;
+        this.score = new Score(this);
     }
 
     public void updateScore(Board board){
