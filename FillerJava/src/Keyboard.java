@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class Keyboard {
 
-    public static String askString() {
+    public static String askString(String ask) {
+        System.out.println(ask);
         Scanner sc = new Scanner(System.in);
         String string = sc.nextLine();
         return string;

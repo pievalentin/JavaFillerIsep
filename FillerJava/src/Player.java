@@ -8,9 +8,13 @@ public class Player {
     private Score score;
     private int startI;
     private int startJ;
+    private Colors playerColor;
+
+
 
     public Player(String name, int startI, int startJ) {
         this.name = name;
+
         this.startI = startI;
         this.startJ = startJ;
         this.score = new Score(this);
@@ -26,20 +30,38 @@ public class Player {
         score.setScore(score.calculateScore(board));
     }
 
-    public void play(Board board) {
+    public void play(Board board, Player[] list) {
         Colors color;
-        color = askColor();
+        color = askColor(list);
         board.take(color, this);
+        this.setPlayerColor(color);
 
 
     }
 
-    public static Colors askColor() {
+    public void play(Board board, Colors color){
+        board.take(color, this);
+        this.setPlayerColor(color);
+    }
+
+    public static Colors askColor(Player[] list) {
         String answer;
         Colors color;
-        System.out.println("choisissez une couleur : ");
-        answer = Keyboard.askString();
+        boolean incorrect = true;
+        answer = Keyboard.askString("choisissez une couleur : ");
         color = Keyboard.stringToColor(answer);
+        while(incorrect){
+            for (Player key:list
+                 ) {
+                if(key.getPlayerColor() == color){
+                    answer = Keyboard.askString("Vous avez choisis une couleur de l'adversaire recommencez : ");
+                    color = Keyboard.stringToColor(answer);}
+
+                    else
+                    incorrect=false;
+                }
+            }
+
         return color;
 
     }
@@ -75,5 +97,13 @@ public class Player {
 
     public void setScore(Score score) {
         this.score = score;
+    }
+
+    public Colors getPlayerColor() {
+        return playerColor;
+    }
+
+    public void setPlayerColor(Colors playerColor) {
+        this.playerColor = playerColor;
     }
 }

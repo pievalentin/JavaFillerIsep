@@ -15,21 +15,21 @@ public class Party {
 
             if (i == 0) {
                 listPlayers[i] = new Player(sizeBoard - 1, 0);
-                listPlayers[i].setName("player" + i);
+                listPlayers[i].setName("player 1");
             }
             if (i == 1) {
                 listPlayers[i] = new Player(0, sizeBoard - 1);
-                listPlayers[i].setName("player" + i);
+                listPlayers[i].setName("player 2");
             }
             if (i == 2) {
 
                 listPlayers[i]= new Player(0,0);
-                listPlayers[i].setName("player" + i);
+                listPlayers[i].setName("player 3");
             }
 
             if (i == 3) {
                 listPlayers[i] = new Player(sizeBoard - 1, sizeBoard - 1);
-                listPlayers[i].setName("player" + i);
+                listPlayers[i].setName("player 4");
             }
 
         }
@@ -37,19 +37,19 @@ public class Party {
         for (int i = nbPLayer - nbIA; i <= listPlayers.length; i++) {
             if (i == 0) {
                 listPlayers[i] = new IA(sizeBoard - 1, 0);
-                listPlayers[i].setName("IA" + i);
+                listPlayers[i].setName("IA 1");
             }
             if (i == 1) {
                 listPlayers[i] = new Player(0, sizeBoard - 1);
-                listPlayers[i].setName("IA" + i);
+                listPlayers[i].setName("IA 2");
             }
             if (i == 2) {
                 listPlayers[i]= new Player(0,0);
-                listPlayers[i].setName("IA" + i);
+                listPlayers[i].setName("IA 3");
             }
             if (i == 3) {
                 listPlayers[i] = new Player(sizeBoard - 1, sizeBoard - 1);
-                listPlayers[i].setName("IA" + i);
+                listPlayers[i].setName("IA 4");
             }
 
             //System.out.println(board.getTokens().length);
@@ -65,7 +65,9 @@ public class Party {
         for (Player player: listPlayers
                 ) {
             board.setStartingPoint(player,player.getStartI(),player.getStartJ());
-
+            Colors startColor = board.getTokens()[player.getStartI()][player.getStartJ()].getColor();
+            player.setPlayerColor(startColor);
+            player.play(board,player.getPlayerColor());
         }
 
         board.displayConsole();
@@ -75,7 +77,7 @@ public class Party {
             for (Player player: listPlayers
                  ) {
 
-                player.play(board);
+                player.play(board,listPlayers);
                 player.updateScore(board);
                 board.displayConsole();
                 System.out.println();

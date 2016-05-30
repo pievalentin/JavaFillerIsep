@@ -38,18 +38,15 @@ public class Board {
 
         boolean modification;
         modification = true;
-        int count = 0;
+
         while (modification) {
-            count++;
+
             modification = false;
-            //===============================================================================================
 
             for (int i = 0; i < size; i++) {
 
                 for (int j = 0; j < size; j++) {
-                    //System.out.println("1 tour");
-                    //dans le centre
-                    //if(0 < i < size - 1 ) {                                   /* ============ Au centre ============ */
+
                     if (tokens[i][j].getOwner() == player) {
                         if (i != 0)
                             modification = (tokens[i - 1][j].eat(player, color) || modification);
@@ -64,11 +61,8 @@ public class Board {
                 }
             }
 
-            //System.out.println(modification);
-           /* if (count > 50)
-                modification = false;*/
 
-            //===========================================================================================
+
 
         }
 
@@ -89,49 +83,6 @@ public class Board {
 
         }
 
-    }
-
-    public Token[] voisin(int i, int j) {
-        /**
-         * @param
-         *
-         * i index i
-         *
-         *  @param
-         * j index j
-         *
-         *
-         *@return
-         *              0
-         *           3 i,j 1
-         *              2
-         *  **/
-
-
-        Token[] result;
-        result = new Token[3];
-
-        try {
-            result[0] = tokens[i - 1][j];
-        } catch (IndexOutOfBoundsException e) {
-        }
-
-        try {
-            result[1] = tokens[i][j + 1];
-        } catch (IndexOutOfBoundsException e) {
-        }
-
-        try {
-            result[2] = tokens[i + 1][j];
-        } catch (IndexOutOfBoundsException e) {
-        }
-        try {
-            result[3] = tokens[i][j - 1];
-        } catch (IndexOutOfBoundsException e) {
-        }
-
-
-        return result;
     }
 
 
