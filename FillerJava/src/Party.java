@@ -33,33 +33,61 @@ public class Party {
             }
 
         }
+        if(nbIA!=nbPLayer){
+            for (int i = nbPLayer - nbIA; i <= listPlayers.length; i++) {
+                System.out.println("lol");
+                if (i == 0) {
+                    listPlayers[i] = new IA(sizeBoard - 1, 0);
+                    listPlayers[i].setName("IA 1");
+                }
+                if (i == 1) {
+                    listPlayers[i] = new Player(0, sizeBoard - 1);
+                    listPlayers[i].setName("IA 2");
+                }
+                if (i == 2) {
+                    listPlayers[i]= new Player(0,0);
+                    listPlayers[i].setName("IA 3");
+                }
+                if (i == 3) {
+                    listPlayers[i] = new Player(sizeBoard - 1, sizeBoard - 1);
+                    listPlayers[i].setName("IA 4");
+                }
 
-        for (int i = nbPLayer - nbIA; i <= listPlayers.length; i++) {
-            if (i == 0) {
-                listPlayers[i] = new IA(sizeBoard - 1, 0);
-                listPlayers[i].setName("IA 1");
+                //System.out.println(board.getTokens().length);
+            start();
             }
-            if (i == 1) {
-                listPlayers[i] = new Player(0, sizeBoard - 1);
-                listPlayers[i].setName("IA 2");
-            }
-            if (i == 2) {
-                listPlayers[i]= new Player(0,0);
-                listPlayers[i].setName("IA 3");
-            }
-            if (i == 3) {
-                listPlayers[i] = new Player(sizeBoard - 1, sizeBoard - 1);
-                listPlayers[i].setName("IA 4");
-            }
+        }
 
-            //System.out.println(board.getTokens().length);
-        start();
+
+        else {
+            for (int i = 0; i <= listPlayers.length; i++) {
+                System.out.println(listPlayers.length);
+                if (i == 0) {
+                    listPlayers[i] = new IA(sizeBoard - 1, 0);
+                    listPlayers[i].setName("IA 1");
+                }
+                if (i == 1) {
+                    listPlayers[i] = new Player(0, sizeBoard - 1);
+                    listPlayers[i].setName("IA 2");
+                }
+                if (i == 2) {
+                    listPlayers[i]= new Player(0,0);
+                    listPlayers[i].setName("IA 3");
+                }
+                if (i == 3) {
+                    listPlayers[i] = new Player(sizeBoard - 1, sizeBoard - 1);
+                    listPlayers[i].setName("IA 4");
+                }
+
+                //System.out.println(board.getTokens().length);
+                start();
+            }
         }
     }
 
 
-    public void start() { //une partie avec un joueur et une IA
-        double maxScore = board.getTokens().length * board.getTokens().length;
+    public void start() {
+        double maxScore = (board.getTokens().length * board.getTokens().length)/2;
         over = false;
 
         for (Player player: listPlayers
