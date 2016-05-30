@@ -2,25 +2,25 @@
  * Created by Pierre Valentin on 17/05/2016.
  */
 public class Score {
-    double score;
+    int score;
     Player player;
 
     public Score(Player player) {
         this.player = player;
     }
 
-    public double calculateScore(Board board) {
-        double result;
+    public int calculateScore(Board board) {
+        int result;
         result = board.calculateOwnership(player);
         return result;
 
     }
 
-    public double getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(int score) {
         this.score = score;
     }
 

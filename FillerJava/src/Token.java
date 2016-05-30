@@ -6,12 +6,22 @@ public class Token {
     private Player owner;
     boolean possesed;
 
-    public void eat(Player player, Colors color) {
+    public boolean eat(Player player, Colors color) {
+        if (this.getOwner() == player) {
+            this.owner = player;
+            this.possesed = true;
+            this.color = color;
+            return true;
+        }
+
         if (this.isAvailable(color)) {
             this.owner = player;
             this.possesed = true;
             this.color = color;
+            return true;
         }
+
+        return false;
     }
 
     public Token(Colors color, Player owner, boolean possesed) {
@@ -27,12 +37,7 @@ public class Token {
 
     public boolean isAvailable(Colors color){
         Boolean result;
-        if (!this.isPossesed() && this.getColor() == color) {
-            result = true;
-        }
-        else{
-            result = false;
-        }
+        result = !this.isPossesed() && this.getColor() == color;
 
 
         return result;

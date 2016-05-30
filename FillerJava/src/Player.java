@@ -23,8 +23,7 @@ public class Player {
     }
 
     public void updateScore(Board board){
-        double result =  score.calculateScore(board);
-        score.setScore(result);
+        score.setScore(score.calculateScore(board));
     }
 
     public void play(Board board) {

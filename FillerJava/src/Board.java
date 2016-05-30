@@ -35,22 +35,25 @@ public class Board {
 
         //TODO eliminer les trucs du coté.
 
-        int changeNew;
-        int changeOld;
 
-        do {
-            changeNew = 0;
+        boolean modification;
+        modification = true;
+        int count = 0;
+        while (modification) {
+            count++;
+            modification = false;
             //===============================================================================================
 
             for (int i = 0; i < size; i++) {
 
                 for (int j = 0; j < size; j++) {
+                    //System.out.println("1 tour");
 
                     if (i == 0 && j == 0) {
                         if (tokens[i][j].getOwner() == player) {
                             tokens[i][j].setColor(color);
-                            tokens[i + 1][j].eat(player, color);
-                            tokens[i][j + 1].eat(player, color);
+                            modification = (tokens[i + 1][j].eat(player, color) || modification);
+                            modification = (tokens[i][j + 1].eat(player, color) || modification);
 
                         }
                     }
@@ -58,8 +61,8 @@ public class Board {
                     if (i == size - 1 && j == 0) {
                         if (tokens[i][j].getOwner() == player) {
                             tokens[i][j].setColor(color);
-                            tokens[i - 1][j].eat(player, color);
-                            tokens[i][j + 1].eat(player, color);
+                            modification = (tokens[i - 1][j].eat(player, color) || modification);
+                            modification = (tokens[i][j + 1].eat(player, color) || modification);
 
                         }
                     }
@@ -68,8 +71,8 @@ public class Board {
                     if (i == 0 && j == size - 1) {
                         if (tokens[i][j].getOwner() == player) {
                             tokens[i][j].setColor(color);
-                            tokens[i][j - 1].eat(player, color);
-                            tokens[i + 1][j].eat(player, color);
+                            modification = (tokens[i][j - 1].eat(player, color) || modification);
+                            modification = (tokens[i + 1][j].eat(player, color) || modification);
 
                         }
                     }
@@ -77,8 +80,8 @@ public class Board {
                     if (i == size - 1 && j == size - 1) {
                         if (tokens[i][j].getOwner() == player) {
                             tokens[i][j].setColor(color);
-                            tokens[i - 1][j].eat(player, color);
-                            tokens[i][j - 1].eat(player, color);
+                            modification = (tokens[i - 1][j].eat(player, color) || modification);
+                            modification = (tokens[i][j - 1].eat(player, color) || modification);
 
                         }
                     }
@@ -88,11 +91,11 @@ public class Board {
                         if (tokens[i][j].getOwner() == player) {/* ============ ligne du haut ============ */
                     /*tokens[i - 1][j].eat(player, color);*/
                             if (j != 0)
-                                tokens[i][j - 1].eat(player, color);
+                                modification = (tokens[i][j - 1].eat(player, color) || modification);
                             if (j != size - 1)
-                                tokens[i][j + 1].eat(player, color);
+                                modification = (tokens[i][j + 1].eat(player, color) || modification);
                             if (i != size - 1)
-                                tokens[i + 1][j].eat(player, color);
+                                modification = (tokens[i + 1][j].eat(player, color) || modification);
 
                         }
                     }//fin haut
@@ -102,11 +105,11 @@ public class Board {
                         if (tokens[i][j].getOwner() == player) {
                             tokens[i][j].setColor(color);
                             if (i != 0)
-                                tokens[i - 1][j].eat(player, color);
+                                modification = (tokens[i - 1][j].eat(player, color) || modification);
                             if (j != 0)
-                                tokens[i][j - 1].eat(player, color);
+                                modification = (tokens[i][j - 1].eat(player, color) || modification);
                             if (j != size - 1)
-                                tokens[i][j + 1].eat(player, color);
+                                modification = (tokens[i][j + 1].eat(player, color) || modification);
                             // tokens[i + 1][j].eat(player, color);
                         }
                     }// fin pour le bas
@@ -116,12 +119,12 @@ public class Board {
                         if (tokens[i][j].getOwner() == player) {
                             tokens[i][j].setColor(color);
                             if (i != 0)
-                                tokens[i - 1][j].eat(player, color);
+                                modification = (tokens[i - 1][j].eat(player, color) || modification);
                             if (j != 0)
-                                tokens[i][j - 1].eat(player, color);
+                                modification = (tokens[i][j - 1].eat(player, color) || modification);
                             // tokens[i][j + 1].eat(player, color);
                             if (i != size - 1)
-                                tokens[i + 1][j].eat(player, color);
+                                modification = (tokens[i + 1][j].eat(player, color) || modification);
 
                         }
                     }// fin coté droit
@@ -131,12 +134,12 @@ public class Board {
                         if (tokens[i][j].getOwner() == player) {
                             tokens[i][j].setColor(color);
                             if (i != 0)
-                                tokens[i - 1][j].eat(player, color);
+                                modification = (tokens[i - 1][j].eat(player, color) || modification);
                             // tokens[i][j - 1].eat(player, color);
                             if (j != size - 1)
-                                tokens[i][j + 1].eat(player, color);
+                                modification = (tokens[i][j + 1].eat(player, color) || modification);
                             if (i != size - 1)
-                                tokens[i + 1][j].eat(player, color);
+                                modification = (tokens[i + 1][j].eat(player, color) || modification);
 
                         }
                     }// fin coté gauche
@@ -146,22 +149,26 @@ public class Board {
                     //if(0 < i < size - 1 ) {                                   /* ============ Au centre ============ */
                     if (tokens[i][j].getOwner() == player) {
                         if (i != 0)
-                            tokens[i - 1][j].eat(player, color);
+                            modification = (tokens[i - 1][j].eat(player, color) || modification);
                         if (j != 0)
-                            tokens[i][j - 1].eat(player, color);
+                            modification = (tokens[i][j - 1].eat(player, color) || modification);
                         if (j != size - 1)
-                            tokens[i][j + 1].eat(player, color);
+                            modification = (tokens[i][j + 1].eat(player, color) || modification);
                         if (i != size - 1)
-                            tokens[i + 1][j].eat(player, color);
+                            modification = (tokens[i + 1][j].eat(player, color) || modification);
                         //}
                     }
                 }
             }
 
+            //System.out.println(modification);
+            if (count > 50)
+                modification = false;
 
             //===========================================================================================
-            changeOld = changeNew;
-        } while (changeNew != changeOld && changeNew != 0);
+
+
+        }
 
     }
 
@@ -279,12 +286,13 @@ public class Board {
         System.out.println(Colors.colorsToString(tokens[2][2].getColor()));
     }
 
-    public double calculateOwnership(Player player) {
-        double result = 0;
-        for (int i = 0; i < tokens.length; i++) {
-            for (int j = 0; j < tokens.length; j++) {
+    public int calculateOwnership(Player player) {
+        int result = 0;
+
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - 1; j++) {
                 if (tokens[i][j].getOwner() == player)
-                    result = +1;
+                    result = result + 1;
 
             }
         }
