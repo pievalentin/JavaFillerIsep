@@ -1,17 +1,20 @@
 public class Party {
     int numberOfPlayer;
+    int numberOfIA;
     Player[] listPlayers;
+    IA[] listIA;
     Board board;
     Boolean over;
     Player winner;
 
     public Party(int sizeBoard,int nbPLayer, int nbIA) {
-
+        this.numberOfPlayer=nbPLayer;
+        this.numberOfIA = nbIA;
         board = new Board(sizeBoard);
 
         listPlayers = new Player[nbPLayer];
 
-        for (int i = 0; i <nbPLayer-nbIA ; i++) {
+        for (int i = 0; i <numberOfPlayer ; i++) {
 
             if (i == 0) {
                 listPlayers[i] = new Player(sizeBoard - 1, 0);
@@ -33,9 +36,8 @@ public class Party {
             }
 
         }
-        if(nbIA!=nbPLayer){
-            for (int i = nbPLayer - nbIA; i <= listPlayers.length; i++) {
-                System.out.println("lol");
+
+            for (int i = 0; i < listPlayers.length; i++) {
                 if (i == 0) {
                     listPlayers[i] = new IA(sizeBoard - 1, 0);
                     listPlayers[i].setName("IA 1");
@@ -52,38 +54,9 @@ public class Party {
                     listPlayers[i] = new Player(sizeBoard - 1, sizeBoard - 1);
                     listPlayers[i].setName("IA 4");
                 }
-
-                //System.out.println(board.getTokens().length);
-            start();
             }
-        }
-
-
-        else {
-            for (int i = 0; i <= listPlayers.length; i++) {
-                System.out.println(listPlayers.length);
-                if (i == 0) {
-                    listPlayers[i] = new IA(sizeBoard - 1, 0);
-                    listPlayers[i].setName("IA 1");
-                }
-                if (i == 1) {
-                    listPlayers[i] = new Player(0, sizeBoard - 1);
-                    listPlayers[i].setName("IA 2");
-                }
-                if (i == 2) {
-                    listPlayers[i]= new Player(0,0);
-                    listPlayers[i].setName("IA 3");
-                }
-                if (i == 3) {
-                    listPlayers[i] = new Player(sizeBoard - 1, sizeBoard - 1);
-                    listPlayers[i].setName("IA 4");
-                }
-
-                //System.out.println(board.getTokens().length);
-                start();
+        start();
             }
-        }
-    }
 
 
     public void start() {
@@ -95,7 +68,7 @@ public class Party {
             board.setStartingPoint(player,player.getStartI(),player.getStartJ());
             Colors startColor = board.getTokens()[player.getStartI()][player.getStartJ()].getColor();
             player.setPlayerColor(startColor);
-            player.play(board,player.getPlayerColor());
+            player.play(board, player.getPlayerColor());
             player.updateScore(board);
         }
 
@@ -103,44 +76,55 @@ public class Party {
         System.out.println("");
 
         while (!over) {
-            for (Player player: listPlayers
+            for (Player key: listPlayers
                  ) {
+                if(key instanceof IA){
+                    System.out.println("l'ia joue");
+                    key.playIA(board,listPlayers,numberOfPlayer);}
 
-                player.play(board,listPlayers);
-                player.updateScore(board);
+
+                key.play(board,listPlayers);
+                key.updateScore(board);
                 board.displayConsole();
                 System.out.println();
 
-                for (Player key: listPlayers) {
-                    System.out.println(key.getName() + " :" + key.getScore());
+                for (Player key1: listPlayers) {
+                    System.out.println(key1.getName() + " :" + key1.getScore());
                 }
+
+
+            //for (Player player : listPlayers) {
+                if (key.getScore() >= maxScore) {
+                    over = true;
+                    isOver(key);
+                    break;
+                //}
             }
 
-            for (Player player : listPlayers) {
-                if (player.getScore() >= maxScore) {
-                    over = true;
-                    isOver(player);
-                    break;
-                } else
-                    over = false;
-
-
-
-
+            }
         }
-            try {
+    }
+
+            /*try {
                 Thread.sleep(25);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
 
-    }
+
 
     public void isOver(Player player) {
         winner = player;
-        System.out.println("le gagnat est : " + winner.getName());
+        System.out.println("le gagnant est : " + winner.getName());
     }
 
 
+    public int getNumberOfPlayer() {
+        return numberOfPlayer;
+    }
+
+    public Player[] getListPlayers() {
+        return listPlayers;
+    }
 }

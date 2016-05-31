@@ -106,4 +106,6 @@ public class Player {
     public void setPlayerColor(Colors playerColor) {
         this.playerColor = playerColor;
     }
+
+
 }

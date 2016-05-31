@@ -6,7 +6,7 @@ public class Main {
         // TODO Auto-generated method stub
         System.out.println("Bienvenue dans Filler version minimale ");
 
-        Party party = new Party(6, 2, 2);
+        Party party = new Party(4, 2, 1);
 
     }
 
