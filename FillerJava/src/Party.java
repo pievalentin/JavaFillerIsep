@@ -39,17 +39,6 @@ public class Party {
             listIA[i].setName("IA "+i);
             indexStarter++;
         }
-//
-//        // Definition du tableau de touts les player que l'ia utilisera
-//        for (int i = 0; i <numberOfPlayer ; i++) {
-//            listAllPlayers[i]=new Player(0,0);
-//            listAllPlayers[i]=listPlayers[i];
-//
-//        }
-//        for (int i = numberOfPlayer-1; i <numberOfIA ; i++) {
-//            listAllPlayers[i] = new IA(0,0);
-//            listAllPlayers[i]=listIA[i];
-//        }
 
 
         //System.out.println(listIA[0].getStartJ());
@@ -95,9 +84,10 @@ public class Party {
                     board.displayConsole();
                     System.out.println();
                     //affichage des scores
+                    System.out.println();
                     if(numberOfPlayer!=0){
                         for (Player key1: listPlayers) {
-                            System.out.println(key1.getName() + " :" + key1.getScore());
+                            System.out.println("Score de "+key1.getName() + " :" + key1.getScore());
                         }
                     }
                     if (numberOfIA!=0){
@@ -120,29 +110,30 @@ public class Party {
             }
 
             if (numberOfIA!=0){
-            for (IA ia: listIA
-                    ) {
-                ia.playIA(board,listPlayers,listIA,totalOfPlayer,this);
-                ia.updateScore(board);
-                board.displayConsole();
-                System.out.println();
-                //affichage des scores
-                for (Player key1: listPlayers) {
-                    System.out.println(key1.getName() + " :" + key1.getScore());
-                }
-                for (IA key2: listIA
+                for (IA ia: listIA
                         ) {
-                    System.out.println(key2.getName() + " :" + key2.getScore());
-                }
+                    ia.playIA(board,listPlayers,listIA,totalOfPlayer,this);
+                    ia.updateScore(board);
+                    board.displayConsole();
+                    System.out.println();
+                    //affichage des scores
+                    for (Player key1: listPlayers) {
+                        System.out.println(key1.getName() + " :" + key1.getScore());
+                    }
+                    for (IA key2: listIA
+                            ) {
+                        System.out.println(key2.getName() + " :" + key2.getScore());
+                    }
 
-                if (ia.getScore() >= maxScore) {
-                    over = true;
-                    isOver(ia);
-                    break;
-                }
+                    if (ia.getScore() >= maxScore) {
+                        over = true;
+                        isOver(ia);
+                        break;
+                    }
 
+                }
             }
-        }}
+        }
     }
 
             /*try {

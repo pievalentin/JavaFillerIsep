@@ -15,6 +15,12 @@ public class Main {
 
          */
 
+        //TODO corriger l'erreur de choix pour les joueur qui se trompe deux fois
+        //// TODO: 01/06/2016 corriger le départ des IA 
+
+        //
+
+
         Party party = new Party(4, 0, 2);
 
     }

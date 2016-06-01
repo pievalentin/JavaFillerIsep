@@ -56,7 +56,6 @@ public class Player {
                  ) {
                 if(color == keys ){
                     incorrect=false;
-                    System.out.println("je suis la" );
                     break;
                 }
                 sortieBoucle++;
