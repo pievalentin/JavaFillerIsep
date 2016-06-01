@@ -23,9 +23,9 @@ public class IA extends Player {
         Colors color;
         boolean check = true;
         color = decideColorRandom(listPlayer,listIA,numbOfPlayer,party);
+        this.setPlayerColor(color);
         board.take(color, this);
         System.out.println("l'ia joue :"+Colors.colorsToString(color).toLowerCase());
-        this.setPlayerColor(color);
     }
 
 
