@@ -2,6 +2,7 @@ public class Party {
 
     private int numberOfPlayer;
     private int numberOfIA;
+    private int totalOfPlayer;
     private Player[] listAllPlayers;
     private Player[] listPlayers;
     private IA[] listIA;
@@ -12,6 +13,7 @@ public class Party {
     public Party(int sizeBoard,int nbPLayer, int nbIA) {
         this.numberOfPlayer=nbPLayer;
         this.numberOfIA = nbIA;
+        this.totalOfPlayer=nbIA+nbPLayer;
         board = new Board(sizeBoard);
 
         listPlayers = new Player[nbPLayer];
@@ -37,17 +39,17 @@ public class Party {
             listIA[i].setName("IA "+i);
             indexStarter++;
         }
-
-        // Definition du tableau de touts les player que l'ia utilisera
-        for (int i = 0; i <numberOfPlayer ; i++) {
-            listAllPlayers[i]=new Player(0,0);
-            listAllPlayers[i]=listPlayers[i];
-
-        }
-        for (int i = numberOfPlayer-1; i <numberOfIA ; i++) {
-            listAllPlayers[i] = new IA(0,0);
-            listAllPlayers[i]=listIA[i];
-        }
+//
+//        // Definition du tableau de touts les player que l'ia utilisera
+//        for (int i = 0; i <numberOfPlayer ; i++) {
+//            listAllPlayers[i]=new Player(0,0);
+//            listAllPlayers[i]=listPlayers[i];
+//
+//        }
+//        for (int i = numberOfPlayer-1; i <numberOfIA ; i++) {
+//            listAllPlayers[i] = new IA(0,0);
+//            listAllPlayers[i]=listIA[i];
+//        }
 
 
         //System.out.println(listIA[0].getStartJ());
@@ -77,12 +79,18 @@ public class Party {
         board.displayConsole();
         System.out.println("");
 
+//        for (Colors color: availableColors(listIA,listPlayers,totalOfPlayer)
+//             ) {
+//            System.out.println(Colors.colorsToString(color));
+//
+//        }
+
         while (!over) {
 
             if(numberOfPlayer!=0){
                 for (Player player: listPlayers
                      ) {
-                    player.play(board,listPlayers);
+                    player.play(board,listPlayers,listIA,totalOfPlayer,this);
                     player.updateScore(board);
                     board.displayConsole();
                     System.out.println();
@@ -114,7 +122,7 @@ public class Party {
             if (numberOfIA!=0){
             for (IA ia: listIA
                     ) {
-                ia.playIA(board,listAllPlayers,numberOfIA+numberOfPlayer);
+                ia.playIA(board,listPlayers,listIA,totalOfPlayer,this);
                 ia.updateScore(board);
                 board.displayConsole();
                 System.out.println();
@@ -168,5 +176,39 @@ public class Party {
 
     public Player[] getListAllPlayers() {
         return listAllPlayers;
+    }
+
+    public Colors[] availableColors(IA[] listIA, Player[] listPlayer, int nbTotalPlayer){
+        Colors[] result = new Colors[6-nbTotalPlayer+1];
+        int i = 0;
+        for (Colors colors:Colors.values()
+             ) {
+            boolean toAdd = true;
+            for (Player player:listPlayer
+                 ) {
+                if(player.getPlayerColor()==colors)
+                    toAdd=false;
+
+            }
+
+            for (IA ia:listIA
+                 ) {
+                if(ia.getPlayerColor()==colors)
+                    toAdd=false;
+
+            }
+
+            if(toAdd){
+                result[i]=colors;
+                i++;
+            }
+        }
+
+    return result;
+
+    }
+
+    public int getTotalOfPlayer() {
+        return totalOfPlayer;
     }
 }

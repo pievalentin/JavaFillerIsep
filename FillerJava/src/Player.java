@@ -30,9 +30,9 @@ public class Player {
         this.setScore(board.calculateOwnership(this));
     }
 
-    public void play(Board board, Player[] list) {
+    public void play(Board board, Player[] listPlayer, IA[] listIA,int totalOfPlayer, Party party) {
         Colors color;
-        color = askColor(list);
+        color = askColor(listPlayer, listIA,totalOfPlayer,party);
         board.take(color, this);
         this.setPlayerColor(color);
 
@@ -44,27 +44,34 @@ public class Player {
         this.setPlayerColor(color);
     }
 
-    public static Colors askColor(Player[] list) {
+    public static Colors askColor(Player[] listPlayer,IA[] listIA,int totalOfPlayer, Party party) {
         String answer;
         Colors color;
         boolean incorrect = true;
         answer = Keyboard.askString("choisissez une couleur : ");
         color = Keyboard.stringToColor(answer);
+        int sortieBoucle = 0;
         while(incorrect){
-            for (Player key:list
+            for (Colors keys: party.availableColors(listIA,listPlayer, totalOfPlayer)
                  ) {
-                if(key.getPlayerColor() == color){
+                if(color == keys ){
+                    incorrect=false;
+                    System.out.println("je suis la" );
+                    break;
+                }
+                sortieBoucle++;
+                if (sortieBoucle == 6-totalOfPlayer){
                     answer = Keyboard.askString("Vous avez choisis une couleur de l'adversaire recommencez : ");
                     color = Keyboard.stringToColor(answer);}
 
-                    else
-                    incorrect=false;
-                }
             }
 
-        return color;
+        }
 
+        return color;
     }
+
+
 
 
     public int getStartI() {
