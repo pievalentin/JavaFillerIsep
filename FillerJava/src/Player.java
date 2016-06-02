@@ -61,7 +61,10 @@ public class Player {
                 sortieBoucle++;
                 if (sortieBoucle == 6-totalOfPlayer){
                     answer = Keyboard.askString("Vous avez choisis une couleur de l'adversaire recommencez : ");
-                    color = Keyboard.stringToColor(answer);}
+                    color = Keyboard.stringToColor(answer);
+                    sortieBoucle=0;
+                    incorrect= true;
+                }
 
             }
 

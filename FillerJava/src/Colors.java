@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Random;
 
 
@@ -40,5 +41,27 @@ public enum Colors {
 
         return result;
 
+    }
+
+
+    public static Color colorsToColor(Colors colorToChange){
+        Color result = Color.black;
+        switch (colorToChange){
+            case BLUE:  result = Color.BLUE;
+                break;
+            case RED:  result = Color.RED;
+                break;
+            case GREEN:  result = Color.GREEN;
+                break;
+            case YELLOW:  result = Color.YELLOW;
+                break;
+            case ORANGE:  result = Color.ORANGE;
+                break;
+            case VIOLET:  result = Color.MAGENTA;
+                break;
+
+        }
+
+        return result;
     }
 }

@@ -3,6 +3,7 @@ public class Party {
     private int numberOfPlayer;
     private int numberOfIA;
     private int totalOfPlayer;
+    private int sizeBoard;
     private Player[] listAllPlayers;
     private Player[] listPlayers;
     private IA[] listIA;
@@ -14,6 +15,7 @@ public class Party {
         this.numberOfPlayer=nbPLayer;
         this.numberOfIA = nbIA;
         this.totalOfPlayer=nbIA+nbPLayer;
+        this.sizeBoard=sizeBoard;
         board = new Board(sizeBoard);
 
         listPlayers = new Player[nbPLayer];
@@ -34,10 +36,10 @@ public class Party {
 
 
 
-        for (int i = 0; i < numberOfIA; i++) {
+        for (int i = 0; i < numberOfIA; i++,indexStarter=indexStarter+2) {
             listIA[i] = new IA(locationStater[indexStarter],locationStater[indexStarter+1]);
             listIA[i].setName("IA "+i);
-            indexStarter++;
+           // indexStarter++;
         }
 
 
@@ -88,12 +90,20 @@ public class Party {
                     if(numberOfPlayer!=0){
                         for (Player key1: listPlayers) {
                             System.out.println("Score de "+key1.getName() + " :" + key1.getScore());
+                            if (key1.getScore() >= maxScore) {
+                                over = true;
+                                isOver(player);
+                                break;}
                         }
                     }
                     if (numberOfIA!=0){
                         for (IA key2: listIA
                              ) {
                             System.out.println(key2.getName() + " :" + key2.getScore());
+                            if (key2.getScore() >= maxScore) {
+                                over = true;
+                                isOver(player);
+                                break;}
                         }
                     }
 
@@ -102,9 +112,9 @@ public class Party {
                     if (player.getScore() >= maxScore) {
                         over = true;
                         isOver(player);
-                        break;
+                        break;}
                     //}
-                    }
+
 
                 }
             }
@@ -148,6 +158,7 @@ public class Party {
     public void isOver(Player player) {
         winner = player;
         System.out.println("le gagnant est : " + winner.getName());
+        Runtime.getRuntime().exit(1);
     }
 
 

@@ -103,6 +103,25 @@ public class Board {
 
     }
 
+    public void graphicDisplay(){
+        double coteCarrer = 0.02;
+        double x = 0.02;
+        double y = 1-0.02;
+        for (int i = 0; i < tokens.length; i++) {
+            y = y - coteCarrer*2;
+            x = 0.02;
+            for (int j = 0; j < tokens.length; j++) {
+                StdDraw.setPenColor(Colors.colorsToColor(tokens[i][j].getColor()));
+                StdDraw.filledSquare(x,y,coteCarrer);
+                x = x+coteCarrer*2;
+
+            }
+
+        }
+
+
+    }
+
 
 
     public int calculateOwnership(Player player) {
