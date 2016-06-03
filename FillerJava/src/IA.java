@@ -1,9 +1,6 @@
 import java.util.Arrays;
 import java.util.Random;
 
-/**
- * Created by Pierre Valentin on 17/05/2016.
- */
 public class IA extends Player {
 
 

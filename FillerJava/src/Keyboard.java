@@ -1,7 +1,3 @@
-/**
- * Created by Pierre on 20/05/2016.
- */
-
 import java.util.Scanner;
 
 public class Keyboard {

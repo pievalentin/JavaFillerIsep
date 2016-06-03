@@ -1,22 +1,19 @@
-/**
- * Created by Pierre Valentin on 17/05/2016.
- */
 public class Token {
     private Colors color;
     private Player owner;
-    boolean possesed;
+    boolean possessed;
 
     public boolean eat(Player player, Colors color) {
         if (this.getOwner() == player && this.getColor()!=color) {
             this.owner = player;
-            this.possesed = true;
+            this.possessed = true;
             this.color = color;
             return true;
         }
 
         if (this.isAvailable(color)) {
             this.owner = player;
-            this.possesed = true;
+            this.possessed = true;
             this.color = color;
             return true;
         }
@@ -24,20 +21,20 @@ public class Token {
         return false;
     }
 
-    public Token(Colors color, Player owner, boolean possesed) {
+    public Token(Colors color, Player owner, boolean possessed) {
         this.color = color;
         this.owner = owner;
-        this.possesed = possesed;
+        this.possessed = possessed;
     }
 
-    public Token(Colors color, boolean possesed) {
+    public Token(Colors color, boolean possessed) {
         this.color = color;
-        this.possesed = possesed;
+        this.possessed = possessed;
     }
 
     public boolean isAvailable(Colors color){
         Boolean result;
-        result = !this.isPossesed() && this.getColor() == color;
+        result = !this.isPossessed() && this.getColor() == color;
 
 
         return result;
@@ -60,12 +57,12 @@ public class Token {
         this.owner = owner;
     }
 
-    public boolean isPossesed() {
-        return possesed;
+    public boolean isPossessed() {
+        return possessed;
     }
 
-    public void setPossesed(boolean possesed) {
-        this.possesed = possesed;
+    public void setPossessed(boolean possessed) {
+        this.possessed = possessed;
     }
 }
 

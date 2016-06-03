@@ -1,6 +1,3 @@
-/**
- * Created by Pierre Valentin on 17/05/2016.
- */
 public class Player {
 
 
@@ -14,7 +11,6 @@ public class Player {
 
     public Player(String name, int startI, int startJ) {
         this.name = name;
-
         this.startI = startI;
         this.startJ = startJ;
         this.score = 0;
@@ -60,7 +56,7 @@ public class Player {
                 }
                 sortieBoucle++;
                 if (sortieBoucle == 6-totalOfPlayer){
-                    answer = Keyboard.askString("Vous avez choisis une couleur de l'adversaire recommencez : ");
+                    answer = Keyboard.askString("Vous avez choisi une couleur de l'adversaire. Recommencez : ");
                     color = Keyboard.stringToColor(answer);
                     sortieBoucle=0;
                     incorrect= true;
