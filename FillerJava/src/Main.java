@@ -15,7 +15,7 @@ public class Main {
 
 
          */
-        Game party = new Game(6, 1, 1, true);
+        Game party = new Game(13, 2, 0, true);
 //
 //        Board board = new Board(20);
 //        board.graphicDisplay();
@@ -42,7 +42,8 @@ public class Main {
 //
 //        while (true){
 //            if (StdDraw.mousePressed()){
-//                System.out.println(StdDraw.mouseY());
+//                StdDraw.setPenColor(Color.white);
+//                StdDraw.filledRectangle(0.5,0.20,0.4,0.04);
 //                break;
 //            }
 //

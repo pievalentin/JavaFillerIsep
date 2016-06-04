@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Game {
 
     private int numberOfPlayer;
@@ -12,6 +14,8 @@ public class Game {
     private Player winner;
 
     public Game(int sizeBoard, int nbPLayer, int nbIA, boolean graphic) {
+        Font font = new Font("Helvetica", 1, 18);
+        StdDraw.setFont(font);
         this.numberOfPlayer=nbPLayer;
         this.numberOfIA = nbIA;
         this.totalOfPlayer=nbIA+nbPLayer;
@@ -80,7 +84,10 @@ public class Game {
                 //=========================== fait jouer les joueur humain
                 for (Player player : listPlayers
                         ) {
-
+                    StdDraw.setPenColor(Color.white);
+                    StdDraw.filledRectangle(0.5, 0.20, 0.4, 0.04);
+                    StdDraw.setPenColor(Color.black);
+                    StdDraw.text(0.5, 0.20, player.getName() + " cliquez sur une couleur pour jouer :");
                     board.graphicDisplay();
                     //afficher les option
                     Colors[] available = this.availableColors(listIA, listPlayers, totalOfPlayer);
@@ -140,17 +147,17 @@ public class Game {
                         while (true) {
                             if (StdDraw.mousePressed()) {
 
-                                if (StdDraw.mouseY() < 0.0351 && StdDraw.mouseX() < 0.1251 && 0 < StdDraw.mouseX()) {
+                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 2 && 0 < StdDraw.mouseX()) {
                                     colorToPlay = 0;
                                     break;
                                 }
 
-                                if (StdDraw.mouseY() < 0.0351 && StdDraw.mouseX() < 0.1251 * 3 && 0.1251 < StdDraw.mouseX()) {
+                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 4 && 0.1251 * 2 < StdDraw.mouseX()) {
                                     colorToPlay = 1;
                                     break;
                                 }
 
-                                if (StdDraw.mouseY() < 0.0351 && StdDraw.mouseX() < 0.1251 * 5 && 0.1251 * 3 < StdDraw.mouseX()) {
+                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 6 && 0.1251 * 4 < StdDraw.mouseX()) {
                                     colorToPlay = 2;
                                     break;
                                 }
@@ -169,12 +176,12 @@ public class Game {
                         while (true) {
                             if (StdDraw.mousePressed()) {
 
-                                if (StdDraw.mouseY() < 0.0351 && StdDraw.mouseX() < 0.1251 && 0 < StdDraw.mouseX()) {
+                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 2 && 0 < StdDraw.mouseX()) {
                                     colorToPlay = 0;
                                     break;
                                 }
 
-                                if (StdDraw.mouseY() < 0.0351 && StdDraw.mouseX() < 0.1251 * 3 && 0.1251 < StdDraw.mouseX()) {
+                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 4 && 0.1251 * 2 < StdDraw.mouseX()) {
                                     colorToPlay = 1;
                                     break;
                                 }
@@ -200,14 +207,30 @@ public class Game {
 
                         //balaye les humains
                         for (int i = 0; i < listPlayers.length; i++) {
-                            if (i == 0)
+                            if (i == 0) {
+                                StdDraw.setPenColor(Color.white);
+                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
+                                StdDraw.setPenColor(Color.black);
                                 StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-                            if (i == 1)
+                            }
+                            if (i == 1) {
+                                StdDraw.setPenColor(Color.white);
+                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 3 * 0.16, 0.13, 0.05);
+                                StdDraw.setPenColor(Color.black);
                                 StdDraw.text(0.85, 1 - 0.7 + 3 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-                            if (i == 2)
+                            }
+                            if (i == 2) {
+                                StdDraw.setPenColor(Color.white);
+                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 2 * 0.16, 0.13, 0.05);
+                                StdDraw.setPenColor(Color.black);
                                 StdDraw.text(0.85, 1 - 0.7 + 2 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-                            if (i == 3)
+                            }
+                            if (i == 3) {
+                                StdDraw.setPenColor(Color.white);
+                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 1 * 0.16, 0.13, 0.05);
+                                StdDraw.setPenColor(Color.black);
                                 StdDraw.text(0.85, 1 - 0.7 + 1 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
+                            }
 
                             //System.out.println("Score de "+key1.getName() + " :" + key1.getScore());
 
@@ -222,14 +245,30 @@ public class Game {
 
                     if (numberOfIA != 0) {
                         for (int i = numberOfPlayer; i < listIA.length; i++) {
-                            if (i == 0)
+                            if (i == 0) {
+                                StdDraw.setPenColor(Color.white);
+                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
+                                StdDraw.setPenColor(Color.black);
                                 StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-                            if (i == 1)
+                            }
+                            if (i == 1) {
+                                StdDraw.setPenColor(Color.white);
+                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 3 * 0.16, 0.13, 0.05);
+                                StdDraw.setPenColor(Color.black);
                                 StdDraw.text(0.85, 1 - 0.7 + 3 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-                            if (i == 2)
+                            }
+                            if (i == 2) {
+                                StdDraw.setPenColor(Color.white);
+                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 2 * 0.16, 0.13, 0.05);
+                                StdDraw.setPenColor(Color.black);
                                 StdDraw.text(0.85, 1 - 0.7 + 2 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-                            if (i == 3)
+                            }
+                            if (i == 3) {
+                                StdDraw.setPenColor(Color.white);
+                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 1 * 0.16, 0.13, 0.05);
+                                StdDraw.setPenColor(Color.black);
                                 StdDraw.text(0.85, 1 - 0.7 + 1 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
+                            }
 
                             //System.out.println(key2.getName() + " :" + key2.getScore());
                             if (listIA[i].getScore() >= maxScore) {
@@ -377,14 +416,6 @@ public class Game {
             }
         }
     }
-
-            /*try {
-                Thread.sleep(25);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
-
 
 
     public void isOver(Player player) {
