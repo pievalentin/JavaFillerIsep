@@ -102,25 +102,25 @@ public class Game {
                         while (true) {
                             if (StdDraw.mousePressed()) {
 
-                                if (StdDraw.mouseY() < 0.0351 && StdDraw.mouseX() < 0.1251 && 0 < StdDraw.mouseX()) {
+                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 2 && 0 < StdDraw.mouseX()) {
                                     colorToPlay = 0;
                                     System.out.println("hello, color to play : " + colorToPlay);
                                     break;
                                 }
 
-                                if (StdDraw.mouseY() < 0.0351 && StdDraw.mouseX() < 0.1251 * 3 && 0.1251 < StdDraw.mouseX()) {
+                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 4 && 0.1251 * 2 < StdDraw.mouseX()) {
                                     colorToPlay = 1;
                                     System.out.println("hello, color to play : " + colorToPlay);
                                     break;
                                 }
 
-                                if (StdDraw.mouseY() < 0.0351 && StdDraw.mouseX() < 0.1251 * 5 && 0.1251 * 3 < StdDraw.mouseX()) {
+                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 6 && 0.1251 * 4 < StdDraw.mouseX()) {
                                     colorToPlay = 2;
                                     System.out.println("hello, color to play : " + colorToPlay);
                                     break;
                                 }
 
-                                if (StdDraw.mouseY() < 0.0351 && StdDraw.mouseX() < 0.1251 * 7 && 0.1251 * 5 < StdDraw.mouseX()) {
+                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 8 && 0.1251 * 6 < StdDraw.mouseX()) {
                                     colorToPlay = 3;
                                     System.out.println("hello, color to play : " + colorToPlay);
                                     break;
@@ -221,7 +221,7 @@ public class Game {
 
 
                     if (numberOfIA != 0) {
-                        for (int i = 0; i < listIA.length; i++) {
+                        for (int i = numberOfPlayer; i < listIA.length; i++) {
                             if (i == 0)
                                 StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
                             if (i == 1)
