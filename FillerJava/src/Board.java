@@ -29,7 +29,7 @@ public class Board {
 
     public void setStartingPoint(Player player, int i, int j) {
         tokens[i][j].setOwner(player);
-        tokens[i][j].setPossesed(true);
+        tokens[i][j].setPossessed(true);
     }
 
     public void take(Colors color, Player player) {   /* ============ Pour les carré ============ */
@@ -93,7 +93,7 @@ public class Board {
         for (int i = 0; i < tokens.length; i++) {
             System.out.println();
             for (int j = 0; j < tokens.length; j++) {
-                if (!tokens[i][j].isPossesed())
+                if (!tokens[i][j].isPossessed())
                     System.out.print(Colors.colorsToString(tokens[i][j].getColor()).toLowerCase() + " ");
                 else
                     System.out.print(Colors.colorsToString(tokens[i][j].getColor()) + " ");
