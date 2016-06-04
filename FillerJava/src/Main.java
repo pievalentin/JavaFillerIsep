@@ -15,7 +15,10 @@ public class Main {
 
 
          */
-        Game party = new Game(13, 2, 0, true);
+        Game game = new Game(13, 3, 0, true);
+
+
+
 //
 //        Board board = new Board(20);
 //        board.graphicDisplay();

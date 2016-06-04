@@ -244,8 +244,9 @@ public class Game {
 
 
                     if (numberOfIA != 0) {
-                        for (int i = numberOfPlayer; i < listIA.length; i++) {
+                        for (int i = numberOfPlayer - numberOfIA; i < listIA.length; i++) {
                             if (i == 0) {
+                                System.out.println("hello");
                                 StdDraw.setPenColor(Color.white);
                                 StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
                                 StdDraw.setPenColor(Color.black);
