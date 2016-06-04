@@ -26,9 +26,9 @@ public class Player {
         this.setScore(board.calculateOwnership(this));
     }
 
-    public void play(Board board, Player[] listPlayer, IA[] listIA,int totalOfPlayer, Party party) {
+    public void play(Board board, Player[] listPlayer, IA[] listIA, int totalOfPlayer, Game game) {
         Colors color;
-        color = askColor(listPlayer, listIA,totalOfPlayer,party);
+        color = askColor(listPlayer, listIA, totalOfPlayer, game);
         board.take(color, this);
         this.setPlayerColor(color);
 
@@ -40,7 +40,7 @@ public class Player {
         this.setPlayerColor(color);
     }
 
-    public static Colors askColor(Player[] listPlayer,IA[] listIA,int totalOfPlayer, Party party) {
+    public static Colors askColor(Player[] listPlayer, IA[] listIA, int totalOfPlayer, Game game) {
         String answer;
         Colors color;
         boolean incorrect = true;
@@ -48,8 +48,8 @@ public class Player {
         color = Keyboard.stringToColor(answer);
         int sortieBoucle = 0;
         while(incorrect){
-            for (Colors keys: party.availableColors(listIA,listPlayer, totalOfPlayer)
-                 ) {
+            for (Colors keys : game.availableColors(listIA, listPlayer, totalOfPlayer)
+                    ) {
                 if(color == keys ){
                     incorrect=false;
                     break;

@@ -15,31 +15,48 @@ public class Main {
 
 
          */
-
-
-        Board board = new Board(13);
-        board.graphicDisplay();
-
-//        board.displayConsole();
+        Game party = new Game(6, 1, 1, true);
 //
-//        StdDraw.setPenRadius();
+//        Board board = new Board(20);
+//        board.graphicDisplay();
+//        Font font = new Font("Helvetica",1,18);
+//        StdDraw.setFont(font);
+//        StdDraw.setPenColor(Color.black);
+//        StdDraw.text(0.85,1-0.7+4*0.16,"mon score est");
+//        StdDraw.text(0.85,1-0.7+3*0.16,"mon score est");
+//        StdDraw.text(0.85,1-0.7+2*0.16,"mon score est");
+//        StdDraw.text(0.85,1-0.7+1*0.16,"mon score est");
 //
+//        StdDraw.text(0.5,0.20,"cliquez sur une couleur pour jouer :");
+//
+//        StdDraw.setPenColor(Color.gray);
+//        StdDraw.filledSquare(0.125,0.125-0.09,0.125);
 //        StdDraw.setPenColor(Color.red);
-//        StdDraw.filledSquare(0.02,1-0.02,0.02);
+//        StdDraw.filledSquare(0.125*2+0.125,0.125-0.09,0.125);
+//        StdDraw.setPenColor(Color.black);
+//        StdDraw.filledSquare(0.125*4+0.125,0.125-0.09,0.125);
+//        StdDraw.setPenColor(Color.green);
+//        StdDraw.filledSquare(0.125*7,0.125-0.09,0.125);
+//
+//
+//
+//        while (true){
+//            if (StdDraw.mousePressed()){
+//                System.out.println(StdDraw.mouseY());
+//                break;
+//            }
+//
+//            try { Thread.sleep(80) ;  }  catch (InterruptedException e) {  }
+//
+//        }
+
 
     }
+}
 
 
+//Game party = new Game(4, 1, 1);
 
 
-
-
-
-
-
-
-        //Party party = new Party(4, 1, 1);
-
-    }
 
 

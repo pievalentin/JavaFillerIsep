@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 
 public class IA extends Player {
@@ -16,19 +15,19 @@ public class IA extends Player {
         super(startX, startY);
     }
 
-    public void playIA(Board board, Player[] listPlayer,IA[] listIA, int numbOfPlayer,Party party) {
+    public void playIA(Board board, Player[] listPlayer, IA[] listIA, int numbOfPlayer, Game game) {
         Colors color;
         boolean check = true;
-        color = decideColorRandom(listPlayer,listIA,numbOfPlayer,party);
+        color = decideColorRandom(listPlayer, listIA, numbOfPlayer, game);
         this.setPlayerColor(color);
         board.take(color, this);
         System.out.println("l'ia joue :"+Colors.colorsToString(color).toLowerCase());
     }
 
 
-    public static Colors decideColorRandom(Player[] listPlayer,IA[] listIA, int numbOfPlayer,Party party){
+    public static Colors decideColorRandom(Player[] listPlayer, IA[] listIA, int numbOfPlayer, Game game) {
         Colors color;
-        Colors[] available = party.availableColors(listIA,listPlayer,numbOfPlayer);
+        Colors[] available = game.availableColors(listIA, listPlayer, numbOfPlayer);
         Random generator = new Random();
         int randomIndex = generator.nextInt(available.length-1);
         color = available[randomIndex];

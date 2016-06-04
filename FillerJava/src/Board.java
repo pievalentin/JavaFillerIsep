@@ -1,3 +1,7 @@
+/**
+ * Created by Pierre Valentin on 19/04/2016.
+ */
+
 public class Board {
     private int numberOfPlayer;
     private Token[][] tokens;
@@ -25,12 +29,12 @@ public class Board {
 
     public void setStartingPoint(Player player, int i, int j) {
         tokens[i][j].setOwner(player);
-        tokens[i][j].setPossessed(true);
+        tokens[i][j].setPossesed(true);
     }
 
-    public void take(Colors color, Player player) {   /* ============ Pour les carrés ============ */
+    public void take(Colors color, Player player) {   /* ============ Pour les carré ============ */
 
-        //TODO eliminer les trucs du côté.
+        //TODO eliminer les trucs du coté.
 
 
         boolean modification;
@@ -68,8 +72,8 @@ public class Board {
 
     public void initializeBoard() {
         /*   i
-          j [0][0]  le premier indice définit la ligne.
-            [1][0]  le deuxième définit la colone.
+          j [0][0]  le premier indice définis la ligne.
+            [1][0]  le deuxième définis la colone.
             [2][0]*/
 
         for (int i = 0; i < tokens.length; i++) {
@@ -89,7 +93,7 @@ public class Board {
         for (int i = 0; i < tokens.length; i++) {
             System.out.println();
             for (int j = 0; j < tokens.length; j++) {
-                if (!tokens[i][j].isPossessed())
+                if (!tokens[i][j].isPossesed())
                     System.out.print(Colors.colorsToString(tokens[i][j].getColor()).toLowerCase() + " ");
                 else
                     System.out.print(Colors.colorsToString(tokens[i][j].getColor()) + " ");
@@ -100,16 +104,16 @@ public class Board {
     }
 
     public void graphicDisplay(){
-        double coteCarre = 0.02;
+        double coteCarrer = (0.7 / tokens.length) / 2;
         double x = 0.02;
         double y = 1-0.02;
         for (int i = 0; i < tokens.length; i++) {
-            y = y - coteCarre*2;
+            y = y - coteCarrer*2;
             x = 0.02;
             for (int j = 0; j < tokens.length; j++) {
                 StdDraw.setPenColor(Colors.colorsToColor(tokens[i][j].getColor()));
-                StdDraw.filledSquare(x,y,coteCarre);
-                x = x+coteCarre*2;
+                StdDraw.filledSquare(x,y,coteCarrer);
+                x = x+coteCarrer*2;
 
             }
 
