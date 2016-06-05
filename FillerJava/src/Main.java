@@ -4,8 +4,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        //System.out.println("Bienvenue dans Filler version minimale ");
+
 
         /*
          Le premier parametre renseigne la dimension du plateau de jeux,
@@ -15,8 +14,20 @@ public class Main {
 
 
          */
-        Game game = new Game(13, 1, 1, true);
 
+
+            Game game = new Game(13, 1, 1, true);
+
+
+            //int result = 5%2;
+            //System.out.println(result);
+
+
+
+
+
+    }
+}
 
 
 //
@@ -54,12 +65,6 @@ public class Main {
 //
 //        }
 
-
-    }
-}
-
-
-//Game party = new Game(4, 1, 1);
 
 
 

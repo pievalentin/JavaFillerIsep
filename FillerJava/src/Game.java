@@ -6,6 +6,7 @@ public class Game {
     private int numberOfIA;
     private int totalOfPlayer;
     private int sizeBoard;
+    private int turnNumber;
     private Player[] listAllPlayers;
     private Player[] listPlayers;
     private IA[] listIA;
@@ -76,6 +77,7 @@ public class Game {
             }
         }
 
+        turnNumber= 0;
 
         while (!over) {
 
@@ -91,195 +93,101 @@ public class Game {
                     board.graphicDisplay();
                     //afficher les option
                     Colors[] available = this.availableColors(listIA, listPlayers, totalOfPlayer);
-                    int colorToPlay = 0;
-                    for (int i = 0; i < available.length - 1; i++) {
-                        StdDraw.setPenColor(Colors.colorsToColor(available[i]));
-                        if (i == 0)
-                            StdDraw.filledSquare(0.125, 0.035, 0.125);
-                        if (i == 1)
-                            StdDraw.filledSquare(0.125 * 3, 0.035, 0.125);
-                        if (i == 2)
-                            StdDraw.filledSquare(0.125 * 5, 0.035, 0.125);
-                        if (i == 3)
-                            StdDraw.filledSquare(0.125 * 7, 0.035, 0.125);
-                    }
 
-                    // =========================== affiche les possibilité ====================================
-                    if (totalOfPlayer == 2) {
-                        while (true) {
-                            if (StdDraw.mousePressed()) {
-
-                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 2 && 0 < StdDraw.mouseX()) {
-                                    colorToPlay = 0;
-                                    System.out.println("hello, color to play : " + colorToPlay);
-                                    break;
-                                }
-
-                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 4 && 0.1251 * 2 < StdDraw.mouseX()) {
-                                    colorToPlay = 1;
-                                    System.out.println("hello, color to play : " + colorToPlay);
-                                    break;
-                                }
-
-                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 6 && 0.1251 * 4 < StdDraw.mouseX()) {
-                                    colorToPlay = 2;
-                                    System.out.println("hello, color to play : " + colorToPlay);
-                                    break;
-                                }
-
-                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 8 && 0.1251 * 6 < StdDraw.mouseX()) {
-                                    colorToPlay = 3;
-                                    System.out.println("hello, color to play : " + colorToPlay);
-                                    break;
-                                }
-
-                            }
-                        }
-
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                        }
-
-                    }
-
-                    if (totalOfPlayer == 3) {
-                        while (true) {
-                            if (StdDraw.mousePressed()) {
-
-                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 2 && 0 < StdDraw.mouseX()) {
-                                    colorToPlay = 0;
-                                    break;
-                                }
-
-                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 4 && 0.1251 * 2 < StdDraw.mouseX()) {
-                                    colorToPlay = 1;
-                                    break;
-                                }
-
-                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 6 && 0.1251 * 4 < StdDraw.mouseX()) {
-                                    colorToPlay = 2;
-                                    break;
-                                }
-
-                            }
-                        }
-
-                        try {
-                            Thread.sleep(80);
-                        } catch (InterruptedException e) {
-                        }
-
-                    }
-
-                    if (totalOfPlayer == 4) {
-                        while (true) {
-                            if (StdDraw.mousePressed()) {
-
-                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 2 && 0 < StdDraw.mouseX()) {
-                                    colorToPlay = 0;
-                                    break;
-                                }
-
-                                if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 4 && 0.1251 * 2 < StdDraw.mouseX()) {
-                                    colorToPlay = 1;
-                                    break;
-                                }
-
-                            }
-                        }
-
-                        try {
-                            Thread.sleep(80);
-                        } catch (InterruptedException e) {
-                        }
-
-                    }
+                    //================================= fin possibilité ============================================
 
 
-                    player.play(board, available[colorToPlay]);
+                    player.play(board, available[graphicalChoice(available)]);
+
                     player.updateScore(board);
+                    addTurn();
                     board.displayConsole();
                     board.graphicDisplay();
 
 
                     //==================== affiche les scores
-                    if (numberOfPlayer != 0) {
 
-                        //balaye les humains
-                        for (int i = 0; i < listPlayers.length; i++) {
-                            if (i == 0) {
-                                StdDraw.setPenColor(Color.white);
-                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
-                                StdDraw.setPenColor(Color.black);
-                                StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-                            }
-                            if (i == 1) {
-                                StdDraw.setPenColor(Color.white);
-                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 3 * 0.16, 0.13, 0.05);
-                                StdDraw.setPenColor(Color.black);
-                                StdDraw.text(0.85, 1 - 0.7 + 3 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-                            }
-                            if (i == 2) {
-                                StdDraw.setPenColor(Color.white);
-                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 2 * 0.16, 0.13, 0.05);
-                                StdDraw.setPenColor(Color.black);
-                                StdDraw.text(0.85, 1 - 0.7 + 2 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-                            }
-                            if (i == 3) {
-                                StdDraw.setPenColor(Color.white);
-                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 1 * 0.16, 0.13, 0.05);
-                                StdDraw.setPenColor(Color.black);
-                                StdDraw.text(0.85, 1 - 0.7 + 1 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-                            }
+//
+//                    if (numberOfPlayer != 0) {
+//
+//                        //balaye les humains
+//                        for (int i = 0; i < listPlayers.length; i++) {
+//                            if (i == 0) {
+//                                StdDraw.setPenColor(Color.white);
+//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
+//                                StdDraw.setPenColor(Color.black);
+//                                StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
+//                            }
+//                            if (i == 1) {
+//                                StdDraw.setPenColor(Color.white);
+//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 3 * 0.16, 0.13, 0.05);
+//                                StdDraw.setPenColor(Color.black);
+//                                StdDraw.text(0.85, 1 - 0.7 + 3 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
+//                            }
+//                            if (i == 2) {
+//                                StdDraw.setPenColor(Color.white);
+//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 2 * 0.16, 0.13, 0.05);
+//                                StdDraw.setPenColor(Color.black);
+//                                StdDraw.text(0.85, 1 - 0.7 + 2 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
+//                            }
+//                            if (i == 3) {
+//                                StdDraw.setPenColor(Color.white);
+//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 1 * 0.16, 0.13, 0.05);
+//                                StdDraw.setPenColor(Color.black);
+//                                StdDraw.text(0.85, 1 - 0.7 + 1 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
+//                            }
+//
+//                            //System.out.println("Score de "+key1.getName() + " :" + key1.getScore());
+//
+//                            if (listPlayers[i].getScore() >= maxScore) {
+//                                over = true;
+//                                isOver(listPlayers[i]);
+//                                break;
+//                            }
+//                        }
+//                    }
+//
+//
+//                    if (numberOfIA !=0) {
+//                        for (int i = numberOfPlayer; i < listIA.length; i++) {
+//                            if (i == 0) {
+//                                System.out.println("hello");
+//                                StdDraw.setPenColor(Color.white);
+//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
+//                                StdDraw.setPenColor(Color.black);
+//                                StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
+//                            }
+//                            if (i == 1) {
+//                                StdDraw.setPenColor(Color.white);
+//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 3 * 0.16, 0.13, 0.05);
+//                                StdDraw.setPenColor(Color.black);
+//                                StdDraw.text(0.85, 1 - 0.7 + 3 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
+//                            }
+//                            if (i == 2) {
+//                                StdDraw.setPenColor(Color.white);
+//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 2 * 0.16, 0.13, 0.05);
+//                                StdDraw.setPenColor(Color.black);
+//                                StdDraw.text(0.85, 1 - 0.7 + 2 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
+//                            }
+//                            if (i == 3) {
+//                                StdDraw.setPenColor(Color.white);
+//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 1 * 0.16, 0.13, 0.05);
+//                                StdDraw.setPenColor(Color.black);
+//                                StdDraw.text(0.85, 1 - 0.7 + 1 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
+//                            }
+//
+//                            //System.out.println(key2.getName() + " :" + key2.getScore());
+//                            if (listIA[i].getScore() >= maxScore) {
+//                                over = true;
+//                                isOver(listIA[i]);
+//                                break;
+//                            }
+//                        }
+//                    }
 
-                            //System.out.println("Score de "+key1.getName() + " :" + key1.getScore());
-
-                            if (listPlayers[i].getScore() >= maxScore) {
-                                over = true;
-                                isOver(listPlayers[i]);
-                                break;
-                            }
-                        }
-                    }
 
 
-                    if (numberOfIA != 0) {
-                        for (int i = numberOfPlayer - numberOfIA; i < listIA.length; i++) {
-                            if (i == 0) {
-                                System.out.println("hello");
-                                StdDraw.setPenColor(Color.white);
-                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
-                                StdDraw.setPenColor(Color.black);
-                                StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-                            }
-                            if (i == 1) {
-                                StdDraw.setPenColor(Color.white);
-                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 3 * 0.16, 0.13, 0.05);
-                                StdDraw.setPenColor(Color.black);
-                                StdDraw.text(0.85, 1 - 0.7 + 3 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-                            }
-                            if (i == 2) {
-                                StdDraw.setPenColor(Color.white);
-                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 2 * 0.16, 0.13, 0.05);
-                                StdDraw.setPenColor(Color.black);
-                                StdDraw.text(0.85, 1 - 0.7 + 2 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-                            }
-                            if (i == 3) {
-                                StdDraw.setPenColor(Color.white);
-                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 1 * 0.16, 0.13, 0.05);
-                                StdDraw.setPenColor(Color.black);
-                                StdDraw.text(0.85, 1 - 0.7 + 1 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-                            }
-
-                            //System.out.println(key2.getName() + " :" + key2.getScore());
-                            if (listIA[i].getScore() >= maxScore) {
-                                over = true;
-                                isOver(listIA[i]);
-                                break;
-                            }
-                        }
-                    }
+                    displayScore(turnNumber,player);
 
                     //================== verifie si personne gagne
                     if (player.getScore() >= maxScore) {
@@ -291,13 +199,20 @@ public class Game {
 
 
                 }
+
+
+
+
             }
 
             if (numberOfIA != 0) {
                 for (IA ia : listIA
                         ) {
                     ia.playIA(board, listPlayers, listIA, totalOfPlayer, this);
+                    addTurn();
                     ia.updateScore(board);
+                    board.graphicDisplay();
+                    displayScore(turnNumber,ia);
                     board.displayConsole();
                     System.out.println();
                     //affichage des scores
@@ -322,8 +237,151 @@ public class Game {
     }
 
 
+    public int graphicalChoice(Colors[] available){
+
+        int colorToPlay = 0;
+        for (int i = 0; i < available.length - 1; i++) {
+            StdDraw.setPenColor(Colors.colorsToColor(available[i]));
+            if (i == 0)
+                StdDraw.filledSquare(0.125, 0.035, 0.125);
+            if (i == 1)
+                StdDraw.filledSquare(0.125 * 3, 0.035, 0.125);
+            if (i == 2)
+                StdDraw.filledSquare(0.125 * 5, 0.035, 0.125);
+            if (i == 3)
+                StdDraw.filledSquare(0.125 * 7, 0.035, 0.125);
+        }
+
+        // =========================== affiche les possibilité ====================================
+        if (totalOfPlayer == 2) {
+            while (true) {
+                if (StdDraw.mousePressed()) {
+
+                    if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 2 && 0 < StdDraw.mouseX()) {
+                        colorToPlay = 0;
+                        System.out.println("hello, color to play : " + colorToPlay);
+                        break;
+                    }
+
+                    if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 4 && 0.1251 * 2 < StdDraw.mouseX()) {
+                        colorToPlay = 1;
+                        System.out.println("hello, color to play : " + colorToPlay);
+                        break;
+                    }
+
+                    if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 6 && 0.1251 * 4 < StdDraw.mouseX()) {
+                        colorToPlay = 2;
+                        System.out.println("hello, color to play : " + colorToPlay);
+                        break;
+                    }
+
+                    if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 8 && 0.1251 * 6 < StdDraw.mouseX()) {
+                        colorToPlay = 3;
+                        System.out.println("hello, color to play : " + colorToPlay);
+                        break;
+                    }
+
+                }
+            }
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
+
+        }
+
+        if (totalOfPlayer == 3) {
+            while (true) {
+                if (StdDraw.mousePressed()) {
+
+                    if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 2 && 0 < StdDraw.mouseX()) {
+                        colorToPlay = 0;
+                        break;
+                    }
+
+                    if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 4 && 0.1251 * 2 < StdDraw.mouseX()) {
+                        colorToPlay = 1;
+                        break;
+                    }
+
+                    if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 6 && 0.1251 * 4 < StdDraw.mouseX()) {
+                        colorToPlay = 2;
+                        break;
+                    }
+
+                }
+            }
+
+            try {
+                Thread.sleep(80);
+            } catch (InterruptedException e) {
+            }
+
+        }
+
+        if (totalOfPlayer == 4) {
+            while (true) {
+                if (StdDraw.mousePressed()) {
+
+                    if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 2 && 0 < StdDraw.mouseX()) {
+                        colorToPlay = 0;
+                        break;
+                    }
+
+                    if (StdDraw.mouseY() < 0.25 && StdDraw.mouseX() < 0.125 * 4 && 0.1251 * 2 < StdDraw.mouseX()) {
+                        colorToPlay = 1;
+                        break;
+                    }
+
+                }
+            }
+
+            try {
+                Thread.sleep(80);
+            } catch (InterruptedException e) {
+            }
+
+        }
+        return colorToPlay;
+    }
+
+    public void displayScore(int tour,Player player){
+        if (tour%totalOfPlayer == 1){
+            StdDraw.setPenColor(Color.white);
+            StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
+            StdDraw.setPenColor(Color.black);
+            StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, player.getName() + " : " + player.getScore());
+        }
+
+        if(tour%totalOfPlayer == 2){
+            StdDraw.setPenColor(Color.white);
+            StdDraw.filledRectangle(0.85, 1 - 0.7 + 3 * 0.16, 0.13, 0.05);
+            StdDraw.setPenColor(Color.black);
+            StdDraw.text(0.85, 1 - 0.7 + 3 * 0.16, player.getName() + " : " + player.getScore());
+
+        }
+
+        if(tour%totalOfPlayer == 3){
+            StdDraw.setPenColor(Color.white);
+            StdDraw.filledRectangle(0.85, 1 - 0.7 + 2 * 0.16, 0.13, 0.05);
+            StdDraw.setPenColor(Color.black);
+            StdDraw.text(0.85, 1 - 0.7 + 2 * 0.16, player.getName() + " : " + player.getScore());
+
+        }
+
+        if (tour%totalOfPlayer == 0){
+            StdDraw.setPenColor(Color.white);
+            StdDraw.filledRectangle(0.85, 1 - 0.7 + 1 * 0.16, 0.13, 0.05);
+            StdDraw.setPenColor(Color.black);
+            StdDraw.text(0.85, 1 - 0.7 + 1 * 0.16, player.getName() + " : " + player.getScore());
+        }
+
+
+    }
+
     public void start() {
-        double maxScore = (board.getTokens().length * board.getTokens().length)/2;
+        double maxScore = (board.getTokens().length * board.getTokens().length)/totalOfPlayer;
         over = false;
 
         if(numberOfPlayer!=0){
@@ -473,6 +531,14 @@ public class Game {
 
         return result;
 
+    }
+
+    public int getTurnNumber() {
+        return turnNumber;
+    }
+
+    public void addTurn(){
+        turnNumber = turnNumber+1;
     }
 
     public int getTotalOfPlayer() {
