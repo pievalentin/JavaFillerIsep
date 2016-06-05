@@ -481,7 +481,14 @@ public class Game {
     public void isOver(Player player) {
         winner = player;
         System.out.println("le gagnant est : " + winner.getName());
-        Runtime.getRuntime().exit(1);
+
+        StdDraw.setPenColor(Color.white);
+        StdDraw.filledRectangle(0.5, 0.20, 0.7, 0.04);
+        StdDraw.setPenColor(Color.black);
+        StdDraw.text(0.5, 0.20, "!! "+winner.getName() + " est le gagnant de la partie avec : "+winner.getScore()+" points !!");
+
+
+        //Runtime.getRuntime().exit(1);
     }
 
 
