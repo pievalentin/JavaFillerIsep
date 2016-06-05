@@ -34,4 +34,18 @@ public class IA extends Player {
         return color;
     }
 
+
+    public Colors decideBestColor(Player[] listPlayer, IA[] listIA, int numbOfPlayer, Game game,Colors[] available){
+        Colors result = Colors.BLUE;
+        for (int i = 0; i <available.length; i++) {
+
+
+        }
+
+
+        return result;
+
+
+    }
+
 }

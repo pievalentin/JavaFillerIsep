@@ -49,6 +49,7 @@ public class Board {
                 for (int j = 0; j < size; j++) {
 
                     if (tokens[i][j].getOwner() == player) {
+                        tokens[i][j].setColor(color);
                         if (i != 0)
                             modification = (tokens[i - 1][j].eat(player, color) || modification);
                         if (j != 0)
