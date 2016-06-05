@@ -107,84 +107,6 @@ public class Game {
 
                     //==================== affiche les scores
 
-//
-//                    if (numberOfPlayer != 0) {
-//
-//                        //balaye les humains
-//                        for (int i = 0; i < listPlayers.length; i++) {
-//                            if (i == 0) {
-//                                StdDraw.setPenColor(Color.white);
-//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
-//                                StdDraw.setPenColor(Color.black);
-//                                StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-//                            }
-//                            if (i == 1) {
-//                                StdDraw.setPenColor(Color.white);
-//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 3 * 0.16, 0.13, 0.05);
-//                                StdDraw.setPenColor(Color.black);
-//                                StdDraw.text(0.85, 1 - 0.7 + 3 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-//                            }
-//                            if (i == 2) {
-//                                StdDraw.setPenColor(Color.white);
-//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 2 * 0.16, 0.13, 0.05);
-//                                StdDraw.setPenColor(Color.black);
-//                                StdDraw.text(0.85, 1 - 0.7 + 2 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-//                            }
-//                            if (i == 3) {
-//                                StdDraw.setPenColor(Color.white);
-//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 1 * 0.16, 0.13, 0.05);
-//                                StdDraw.setPenColor(Color.black);
-//                                StdDraw.text(0.85, 1 - 0.7 + 1 * 0.16, listPlayers[i].getName() + " : " + listPlayers[i].getScore());
-//                            }
-//
-//                            //System.out.println("Score de "+key1.getName() + " :" + key1.getScore());
-//
-//                            if (listPlayers[i].getScore() >= maxScore) {
-//                                over = true;
-//                                isOver(listPlayers[i]);
-//                                break;
-//                            }
-//                        }
-//                    }
-//
-//
-//                    if (numberOfIA !=0) {
-//                        for (int i = numberOfPlayer; i < listIA.length; i++) {
-//                            if (i == 0) {
-//                                System.out.println("hello");
-//                                StdDraw.setPenColor(Color.white);
-//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 4 * 0.16, 0.13, 0.05);
-//                                StdDraw.setPenColor(Color.black);
-//                                StdDraw.text(0.85, 1 - 0.7 + 4 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-//                            }
-//                            if (i == 1) {
-//                                StdDraw.setPenColor(Color.white);
-//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 3 * 0.16, 0.13, 0.05);
-//                                StdDraw.setPenColor(Color.black);
-//                                StdDraw.text(0.85, 1 - 0.7 + 3 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-//                            }
-//                            if (i == 2) {
-//                                StdDraw.setPenColor(Color.white);
-//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 2 * 0.16, 0.13, 0.05);
-//                                StdDraw.setPenColor(Color.black);
-//                                StdDraw.text(0.85, 1 - 0.7 + 2 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-//                            }
-//                            if (i == 3) {
-//                                StdDraw.setPenColor(Color.white);
-//                                StdDraw.filledRectangle(0.85, 1 - 0.7 + 1 * 0.16, 0.13, 0.05);
-//                                StdDraw.setPenColor(Color.black);
-//                                StdDraw.text(0.85, 1 - 0.7 + 1 * 0.16, listIA[i].getName() + " : " + listIA[i].getScore());
-//                            }
-//
-//                            //System.out.println(key2.getName() + " :" + key2.getScore());
-//                            if (listIA[i].getScore() >= maxScore) {
-//                                over = true;
-//                                isOver(listIA[i]);
-//                                break;
-//                            }
-//                        }
-//                    }
-
 
 
                     displayScore(turnNumber,player);
@@ -192,7 +114,7 @@ public class Game {
                     //================== verifie si personne gagne
                     if (player.getScore() >= maxScore) {
                         over = true;
-                        isOver(player);
+                        isOverGraphic(player);
                         break;
                     }
                     //}
@@ -226,7 +148,7 @@ public class Game {
 
                     if (ia.getScore() >= maxScore) {
                         over = true;
-                        isOver(ia);
+                        isOverGraphic(ia);
                         break;
                     }
 
@@ -478,7 +400,7 @@ public class Game {
     }
 
 
-    public void isOver(Player player) {
+    public void isOverGraphic(Player player) {
         winner = player;
         System.out.println("le gagnant est : " + winner.getName());
 
@@ -487,8 +409,12 @@ public class Game {
         StdDraw.setPenColor(Color.black);
         StdDraw.text(0.5, 0.20, "!! "+winner.getName() + " est le gagnant de la partie avec : "+winner.getScore()+" points !!");
 
+    }
 
-        //Runtime.getRuntime().exit(1);
+    public void isOver(Player player) {
+        winner = player;
+        System.out.println("le gagnant est : " + winner.getName());
+        Runtime.getRuntime().exit(1);
     }
 
 
