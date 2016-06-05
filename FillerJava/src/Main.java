@@ -16,7 +16,7 @@ public class Main {
          */
 
 
-            Game game = new Game(6, 0, 4, true);
+            Game game = new Game(20, 0, 3, true);
 
 
             //int result = 5%2;
