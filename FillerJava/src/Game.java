@@ -60,7 +60,7 @@ public class Game {
 
     private void startGraphic() {
 
-        double maxScore = (board.getTokens().length * board.getTokens().length) / 2;
+        double maxScore = (board.getTokens().length * board.getTokens().length) / totalOfPlayer;
         over = false;
 
         if (numberOfPlayer != 0) {
