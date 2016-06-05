@@ -1,7 +1,3 @@
-/**
- * Created by Pierre Valentin on 19/04/2016.
- */
-
 public class Board {
     private int numberOfPlayer;
     private Token[][] tokens;
@@ -32,7 +28,7 @@ public class Board {
         tokens[i][j].setPossessed(true);
     }
 
-    public void take(Colors color, Player player) {   /* ============ Pour les carré ============ */
+    public void take(Colors color, Player player) {   /* ============ Pour les carrés ============ */
 
         //TODO eliminer les trucs du coté.
 
@@ -104,16 +100,16 @@ public class Board {
     }
 
     public void graphicDisplay(){
-        double coteCarrer = (0.7 / tokens.length) / 2;
+        double coteCarre = (0.7 / tokens.length) / 2;
         double x = 0.02;
         double y = 1-0.02;
         for (int i = 0; i < tokens.length; i++) {
-            y = y - coteCarrer*2;
+            y = y - coteCarre*2;
             x = 0.02;
             for (int j = 0; j < tokens.length; j++) {
                 StdDraw.setPenColor(Colors.colorsToColor(tokens[i][j].getColor()));
-                StdDraw.filledSquare(x,y,coteCarrer);
-                x = x+coteCarrer*2;
+                StdDraw.filledSquare(x,y,coteCarre);
+                x = x+coteCarre*2;
 
             }
 
