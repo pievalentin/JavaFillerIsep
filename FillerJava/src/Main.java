@@ -15,7 +15,7 @@ public class Main {
 
 
          */
-        Game game = new Game(13, 3, 0, true);
+        Game game = new Game(13, 1, 1, true);
 
 
 

@@ -61,7 +61,7 @@ public class Game {
 
         double maxScore = (board.getTokens().length * board.getTokens().length) / 2;
         over = false;
-        System.out.println("yo");
+
         if (numberOfPlayer != 0) {
             for (Player player : listPlayers
                     ) {
@@ -200,6 +200,7 @@ public class Game {
                     player.play(board, available[colorToPlay]);
                     player.updateScore(board);
                     board.displayConsole();
+                    board.graphicDisplay();
 
 
                     //==================== affiche les scores
