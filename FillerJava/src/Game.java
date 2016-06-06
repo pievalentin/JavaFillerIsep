@@ -561,6 +561,7 @@ public class Game {
     }
         if (this.numberOfPlayer==0){
                 StdDraw.clear();
+            try { Thread.sleep(500) ;  }  catch (InterruptedException e) {  }
                 Font font = new Font("Helvetica",1,18);
                 StdDraw.setFont(font);
                 StdDraw.setPenColor(Color.black);
