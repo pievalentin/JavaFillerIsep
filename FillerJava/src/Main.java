@@ -11,6 +11,8 @@ public class Main {
 
         /!\ Cependant la somme de joueur humain et d'ia ne doit pas exceder 4 /!\
 
+        le deuxieme constructeur lance une partie graphique, les parametres seront aussi renseignés de maniere graphique.
+
 
          */
 
