@@ -609,6 +609,7 @@ public class Game {
 
     public int askSizeBoard(){
         StdDraw.clear();
+        try { Thread.sleep(500) ;  }  catch (InterruptedException e) {  }
         Font font = new Font("Helvetica",1,18);
         StdDraw.setFont(font);
         StdDraw.setPenColor(Color.black);
