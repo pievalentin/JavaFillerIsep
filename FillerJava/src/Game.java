@@ -58,6 +58,48 @@ public class Game {
             startGraphic();
     }
 
+
+
+    public Game(){
+        Font font = new Font("Helvetica", 1, 18);
+        StdDraw.setFont(font);
+        this.numberOfPlayer=askNumberOfPlayer();
+        this.numberOfIA = askNumberOfIA();
+        this.totalOfPlayer=numberOfIA+numberOfPlayer;
+        this.sizeBoard=askSizeBoard();
+        board = new Board(sizeBoard);
+
+        listPlayers = new Player[numberOfPlayer];
+        listIA = new IA[numberOfIA];
+        listAllPlayers = new Player[totalOfPlayer];
+
+        int indexStarter = numberOfPlayer*2;
+
+        int[] locationStater = {(sizeBoard-1),(0),(0),(sizeBoard - 1), (0), (0), (sizeBoard - 1), (sizeBoard - 1)};
+
+        int yes =0 ;
+        for (int i = 0; i <numberOfPlayer ; i++,yes=yes+2) {
+
+            listPlayers[i] = new Player(locationStater[yes],locationStater[yes+1]);
+            listPlayers[i].setName("player "+i);
+
+        }
+
+
+
+        for (int i = 0; i < numberOfIA; i++,indexStarter=indexStarter+2) {
+            listIA[i] = new IA(locationStater[indexStarter],locationStater[indexStarter+1]);
+            listIA[i].setName("IA "+i);
+            // indexStarter++;
+        }
+
+
+        //System.out.println(listIA[0].getStartJ());
+
+            StdDraw.clear();
+            startGraphic();
+    }
+
     private void startGraphic() {
 
         double maxScore = (board.getTokens().length * board.getTokens().length) / totalOfPlayer;
@@ -131,6 +173,7 @@ public class Game {
                 for (IA ia : listIA
                         ) {
                     ia.playIA(board, listPlayers, listIA, totalOfPlayer, this);
+                    //ia.playBestIA(listPlayers,listIA,totalOfPlayer,this,availableColors(listIA,listPlayers,totalOfPlayer),board,board.getTokens());
                     addTurn();
                     ia.updateScore(board);
                     board.graphicDisplay();
@@ -399,6 +442,225 @@ public class Game {
         }
     }
 
+    public int askNumberOfPlayer(){
+        StdDraw.clear();
+        Font font = new Font("Helvetica",1,18);
+        StdDraw.setFont(font);
+        StdDraw.setPenColor(Color.black);
+        StdDraw.text(0.5,1-0.03,"Choisissez le nombre de joueur");
+        StdDraw.line(0,1-0.06,1,1-0.06);
+        StdDraw.text(0.5,1-0.03*5,"0");
+        StdDraw.line(0,1-0.06*4,1,1-0.06*4);
+        StdDraw.text(0.5,1-0.03*11,"1");
+        StdDraw.line(0,1-0.06*7,1,1-0.06*7);
+        StdDraw.text(0.5,1-0.03*18,"2");
+        StdDraw.line(0,1-0.06*10.5,1,1-0.06*10.5);
+        StdDraw.text(0.5,1-0.03*25,"3");
+        StdDraw.line(0,1-0.06*14,1,1-0.06*14);
+        StdDraw.text(0.5,1-0.03*31,"4");
+
+
+
+
+        while (true){
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.03 && 1-0.06*4<StdDraw.mouseY()){
+                int i = 0;
+                System.out.println(i);
+                return i;
+
+
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.06*4 && 1-0.06*7<StdDraw.mouseY()){
+                int i = 1;
+                System.out.println(i);
+                return i;
+
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<(1-0.06*7) && (1-0.06*10.5)<StdDraw.mouseY()){
+                int i = 2;
+                System.out.println(i);
+                return i;
+
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<(1-0.06*10.5) && 1-0.06*14<StdDraw.mouseY()){
+                int i = 3;
+                System.out.println(i);
+                return i;
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.06*14 && 0<StdDraw.mouseY()){
+                int i = 4;
+                System.out.println(i);
+                return i;
+            }
+
+
+            try { Thread.sleep(80) ;  }  catch (InterruptedException e) {  }
+
+
+
+        }
+    }
+
+    public int askNumberOfIA(){
+        int i = 2;
+        if (numberOfPlayer!=0){
+        StdDraw.clear();
+        Font font = new Font("Helvetica",1,18);
+        StdDraw.setFont(font);
+        StdDraw.setPenColor(Color.black);
+        StdDraw.text(0.5,1-0.03,"Choisissez le nombre de d'IA");
+        StdDraw.line(0,1-0.06,1,1-0.06);
+        StdDraw.text(0.5,1-0.03*5,"0");
+        StdDraw.line(0,1-0.06*4,1,1-0.06*4);
+        StdDraw.text(0.5,1-0.03*11,"1");
+        StdDraw.line(0,1-0.06*7,1,1-0.06*7);
+        StdDraw.text(0.5,1-0.03*18,"2");
+        StdDraw.line(0,1-0.06*10.5,1,1-0.06*10.5);
+        StdDraw.text(0.5,1-0.03*25,"3");
+        StdDraw.line(0,1-0.06*14,1,1-0.06*14);
+        StdDraw.text(0.5,1-0.03*31,"4");
+
+
+
+
+        while (true){
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.03 && 1-0.06*4<StdDraw.mouseY()){
+                i = 0;
+                System.out.println(i);
+                return i;
+
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.06*4 && 1-0.06*7<StdDraw.mouseY()){
+                 i = 1;
+                System.out.println(i);
+                return i;
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<(1-0.06*7) && (1-0.06*10.5)<StdDraw.mouseY()){
+                 i = 2;
+                System.out.println(i);
+                return i;
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<(1-0.06*10.5) && 1-0.06*14<StdDraw.mouseY()){
+                 i = 3;
+                System.out.println(i);
+                return i;
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.06*14 && 0<StdDraw.mouseY()){
+                 i = 4;
+                System.out.println(i);
+                return i;
+            }
+
+
+            try { Thread.sleep(80) ;  }  catch (InterruptedException e) {  }
+
+
+
+        }
+    }
+        if (this.numberOfPlayer==0){
+                StdDraw.clear();
+                Font font = new Font("Helvetica",1,18);
+                StdDraw.setFont(font);
+                StdDraw.setPenColor(Color.black);
+                StdDraw.text(0.5,1-0.03,"Choisissez le nombre de d'IA");
+                StdDraw.line(0,1-0.06,1,1-0.06);
+                StdDraw.text(0.5,1-0.03*5,"2");
+                StdDraw.line(0,1-0.06*4,1,1-0.06*4);
+                StdDraw.text(0.5,1-0.03*11,"3");
+                StdDraw.line(0,1-0.06*7,1,1-0.06*7);
+                StdDraw.text(0.5,1-0.03*18,"4");
+                StdDraw.line(0,1-0.06*10.5,1,1-0.06*10.5);
+
+
+
+
+
+                while (true){
+                    if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.03 && 1-0.06*4<StdDraw.mouseY()){
+                         i = 2;
+                        System.out.println(i);
+                        return i;
+
+                    }
+                    if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.06*4 && 1-0.06*7<StdDraw.mouseY()){
+                         i = 3;
+                        System.out.println(i);
+                        return i;
+                    }
+                    if (StdDraw.mousePressed() && StdDraw.mouseY()<(1-0.06*7) && (1-0.06*10.5)<StdDraw.mouseY()){
+                         i = 4;
+                        System.out.println(i);
+                        return i;
+                    }
+
+
+
+                    try { Thread.sleep(80) ;  }  catch (InterruptedException e) {  }
+
+
+
+                }
+        }
+
+        return i;
+    }
+
+    public int askSizeBoard(){
+        StdDraw.clear();
+        Font font = new Font("Helvetica",1,18);
+        StdDraw.setFont(font);
+        StdDraw.setPenColor(Color.black);
+        StdDraw.text(0.5,1-0.03,"Choisissez la taille du plateau de jeux");
+        StdDraw.line(0,1-0.06,1,1-0.06);
+        StdDraw.text(0.5,1-0.03*5,"6");
+        StdDraw.line(0,1-0.06*4,1,1-0.06*4);
+        StdDraw.text(0.5,1-0.03*11,"12");
+        StdDraw.line(0,1-0.06*7,1,1-0.06*7);
+        StdDraw.text(0.5,1-0.03*18,"20");
+        StdDraw.line(0,1-0.06*10.5,1,1-0.06*10.5);
+        StdDraw.text(0.5,1-0.03*25,"30");
+        StdDraw.line(0,1-0.06*14,1,1-0.06*14);
+        StdDraw.text(0.5,1-0.03*31,"40");
+
+
+
+
+        while (true){
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.03 && 1-0.06*4<StdDraw.mouseY()){
+                int i = 6;
+                System.out.println(i);
+                return i;
+
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.06*4 && 1-0.06*7<StdDraw.mouseY()){
+                int i = 12;
+                System.out.println(i);
+                return i;
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<(1-0.06*7) && (1-0.06*10.5)<StdDraw.mouseY()){
+                int i = 20;
+                System.out.println(i);
+                return i;
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<(1-0.06*10.5) && 1-0.06*14<StdDraw.mouseY()){
+                int i = 30;
+                System.out.println(i);
+                return i;
+            }
+            if (StdDraw.mousePressed() && StdDraw.mouseY()<1-0.06*14 && 0<StdDraw.mouseY()){
+                int i = 40;
+                System.out.println(i);
+                return i;
+            }
+
+
+            try { Thread.sleep(80) ;  }  catch (InterruptedException e) {  }
+
+
+
+        }
+    }
 
     public void isOverGraphic(Player player) {
         winner = player;

@@ -21,16 +21,16 @@ public class IA extends Player {
         color = decideColorRandom(listPlayer, listIA, numbOfPlayer, game);
         this.setPlayerColor(color);
         board.take(color, this);
+
         System.out.println("l'ia joue :"+Colors.colorsToString(color).toLowerCase());
     }
 
     public void playBestIA(Player[] listPlayer, IA[] listIA, int numbOfPlayer, Game game,Colors[] available, Board board, Token[][] tokens) {
         Colors color;
-        boolean check = true;
         color = decideBestColor(listPlayer,listIA,numbOfPlayer,game,available,board,tokens);
         this.setPlayerColor(color);
         board.take(color, this);
-        System.out.println("l'ia joue :"+Colors.colorsToString(color).toLowerCase());
+        System.out.println("l'ia joue :"+Colors.colorsToString(Colors.randomColor()).toLowerCase());
     }
 
 
@@ -49,12 +49,14 @@ public class IA extends Player {
         int indexToChoose = 0;
         int[] scores = new int[6-numbOfPlayer];
         Board testBoard = new Board (tokens.length);
-        for (int i = 0; i <available.length; i++) {
+        for (int i = 0; i <available.length-1; i++) {
 
             //on clone le board
             for (int j = 0; j <tokens.length ; j++) {
                 for (int k = 0; k <tokens.length ; k++) {
-                    testBoard.getTokens()[i][j]=tokens[i][j];
+                    testBoard.getTokens()[i][j].setColor(tokens[i][j].getColor());
+                    testBoard.getTokens()[i][j].setPossessed(tokens[i][j].isPossessed());
+                    testBoard.getTokens()[i][j].setOwner(tokens[i][j].getOwner());
                 }
             }
 
@@ -64,7 +66,8 @@ public class IA extends Player {
 
         }
 
-        for (int i = 0; i <scores.length ; i++) {
+        for (int i = 0; i <available.length-1 ; i++) {
+            System.out.println(scores.toString());
             if (indexToChoose<=scores[i])
                 indexToChoose=i;
 

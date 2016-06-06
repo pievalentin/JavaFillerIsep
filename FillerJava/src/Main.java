@@ -15,55 +15,14 @@ public class Main {
 
          */
 
-
-            Game game = new Game(20, 0, 3, true);
-
-
-            //int result = 5%2;
-            //System.out.println(result);
+            //Game game = new Game(20,1,1,false);
+            Game game = new Game();
 
 
 
+    }}
 
 
-    }
-}
-
-
-//
-//        Board board = new Board(20);
-//        board.graphicDisplay();
-//        Font font = new Font("Helvetica",1,18);
-//        StdDraw.setFont(font);
-//        StdDraw.setPenColor(Color.black);
-//        StdDraw.text(0.85,1-0.7+4*0.16,"mon score est");
-//        StdDraw.text(0.85,1-0.7+3*0.16,"mon score est");
-//        StdDraw.text(0.85,1-0.7+2*0.16,"mon score est");
-//        StdDraw.text(0.85,1-0.7+1*0.16,"mon score est");
-//
-//        StdDraw.text(0.5,0.20,"cliquez sur une couleur pour jouer :");
-//
-//        StdDraw.setPenColor(Color.gray);
-//        StdDraw.filledSquare(0.125,0.125-0.09,0.125);
-//        StdDraw.setPenColor(Color.red);
-//        StdDraw.filledSquare(0.125*2+0.125,0.125-0.09,0.125);
-//        StdDraw.setPenColor(Color.black);
-//        StdDraw.filledSquare(0.125*4+0.125,0.125-0.09,0.125);
-//        StdDraw.setPenColor(Color.green);
-//        StdDraw.filledSquare(0.125*7,0.125-0.09,0.125);
-//
-//
-//
-//        while (true){
-//            if (StdDraw.mousePressed()){
-//                StdDraw.setPenColor(Color.white);
-//                StdDraw.filledRectangle(0.5,0.20,0.4,0.04);
-//                break;
-//            }
-//
-//            try { Thread.sleep(80) ;  }  catch (InterruptedException e) {  }
-//
-//        }
 
 
 
