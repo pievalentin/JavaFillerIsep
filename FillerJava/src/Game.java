@@ -505,10 +505,11 @@ public class Game {
         int i = 2;
         if (numberOfPlayer!=0){
         StdDraw.clear();
+            try { Thread.sleep(500) ;  }  catch (InterruptedException e) {  }
         Font font = new Font("Helvetica",1,18);
         StdDraw.setFont(font);
         StdDraw.setPenColor(Color.black);
-        StdDraw.text(0.5,1-0.03,"Choisissez le nombre de d'IA");
+        StdDraw.text(0.5,1-0.03,"Choisissez le nombre de d'IA (ne pas depasser 4 Joueurs)");
         StdDraw.line(0,1-0.06,1,1-0.06);
         StdDraw.text(0.5,1-0.03*5,"0");
         StdDraw.line(0,1-0.06*4,1,1-0.06*4);
